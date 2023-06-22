@@ -1,3 +1,21 @@
 .container {
+	display: grid;
+	gap: var(--gap-m);
 	
+	width: 80vw;
 }
+
+.card {
+	/* Card properties */
+	padding: var(--card-padding);
+	border-radius: var(--card-border-radius);
+	background-color: var(--card-bg-color);
+	box-shadow: var(--card-box-shadow);
+
+	display: grid;
+	grid-auto-flow: column;
+	gap: var(--gap-xl);
+	font-size: var(--font-size-l);
+	min-width: max-content;
+}
+

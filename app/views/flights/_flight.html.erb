@@ -1,0 +1,15 @@
+
+	<tr class="table__row">
+		<td class="table__data">
+			<%= flight.departure_airport.code %>
+		</td>
+		<td class="table__data">
+			<%= flight.arrival_airport.code %>
+		</td>
+		<td class="table__data">
+			<%= rand(1..45) %>
+		</td>
+		<td class="table__data">
+			<%= flight.start.strftime("%F") %>
+		</td>
+	</tr>

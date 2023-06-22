@@ -1,6 +1,13 @@
 /* Color palette from https://coolors.co/palette/faa916-fbfffe-6d676e-1b1b1e-96031a */
 
 :root {
+
+	/* Card properties */
+	--card-padding: var(--padding-l);
+	--card-border-radius: var(--border-radius);
+	--card-bg-color: var(--bg-color-white);
+	--card-box-shadow: var(--box-shadow-l);
+
 	/* Font */
 	--font-family-sans: font-family: "Roboto Condensed";
 	--letter-spacing: 0.1rem;
@@ -40,11 +47,12 @@
 	--bg-color-off-white: hsl(100, 0%, 97%);
 
 	/* Color palette */
-	--primary-color: 				#FAA916;
-	--secondary-color: 	 	  #FBFFFE;
-	--tertiary-color: 			#6D676E;
-	--quaternary-color: 		#1B1B1E;
-	--quinary-color: 				#96031A;
+	--primary-color: 						#FAA916;
+	--primary-color-rotate: 		#c27012;
+	--secondary-color: 	 	  		#FBFFFE;
+	--tertiary-color: 					#6D676E;
+	--quaternary-color: 				#1B1B1E;
+	--quinary-color: 						#96031A;
 
 	/* Borders */
 	--border-radius: 0.50rem;

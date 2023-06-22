@@ -3,6 +3,7 @@
 	padding-right: var(--padding-l);
 }
 .header__brand-group {
+	width: max-content;
 	display: grid;
 	grid-auto-flow: column;
 	justify-content: start;
@@ -11,7 +12,7 @@
 	transition: transform 200ms;
 }
 .header__brand-group:hover {
-	transform: translate(1%, 0)
+	transform: translate(6%, 0)
 }
 .header__logo {
 	--logo-size: 30px;

@@ -1,7 +1,7 @@
 .btn {
 	height: var(--space-xl);
 	font-family: "Roboto Condensed";
-	color: var(--quinary-color);
+	color: var(--quaternary-color);
 	font-size: var(--font-size-xl);
 	font-weight: bold;
 	letter-spacing: var(--letter-spacing);
@@ -19,8 +19,11 @@
 .btn:focus,
 .btn:active {
 		color: var(--font-color-white);
+		background-color: var(--primary-color-rotate);
 		transform: scale(1.04);
 		transform-origin: center;
 		transition: 0.07s;
 		cursor: pointer;
+		box-shadow: var(--box-shadow-l);
+
 }

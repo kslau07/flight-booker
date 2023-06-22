@@ -1,14 +1,16 @@
 .form {
+	/* Card properties */
+	width: var(--card-width);
+	padding: var(--card-padding);
+	border-radius: var(--card-border-radius);
+	background-color: var(--card-bg-color);
+	box-shadow: var(--card-box-shadow);
+	
 	display: grid;
 	grid-auto-flow: column;
 	gap: var(--gap-xl);
 	font-size: var(--font-size-l);
-	background-color: var(--bg-color-white);
-	padding: var(--padding-l);
-	box-shadow: var(--box-shadow-l);
-	border-radius: var(--border-radius);
-	width: 75vw;
-	min-width: max-content;
+	min-width: max-content;	
 }
 .form__item {
 	display: grid;

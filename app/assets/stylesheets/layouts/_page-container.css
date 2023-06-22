@@ -2,4 +2,5 @@
 	display: grid;
 	justify-content: center;
 	padding-top: var(--space-l);
+	gap: var(--gap-l);
 }
