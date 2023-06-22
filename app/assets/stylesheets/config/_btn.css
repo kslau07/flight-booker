@@ -19,11 +19,22 @@
 .btn:focus,
 .btn:active {
 		color: var(--font-color-white);
-		background-color: var(--primary-color-rotate);
+		/* background-color: var(--primary-color-rotate); */
+		filter: hue-rotate(-15deg) saturate(1.8);
 		transform: scale(1.04);
 		transform-origin: center;
 		transition: 0.07s;
 		cursor: pointer;
 		box-shadow: var(--box-shadow-l);
-
+}
+.btn--small {
+	height: var(--space-l);
+	background-color: var(--quinary-color);
+	font-size: var(--font-size-m);
+	color: var(--font-color-white);
+}
+.btn--small:hover,
+.btn--small:focus,
+.btn--small:active {
+	filter: hue-rotate(50deg);
 }

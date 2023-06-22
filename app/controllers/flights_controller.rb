@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-  before_action :update_flight_dates, only: [:index]
+  # before_action :update_flight_dates, only: [:index]
   
   def index
     @flights = Flight.all

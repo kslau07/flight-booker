@@ -3,7 +3,11 @@
 <div class="page-container">
   <div class="container">
     <form action="/flights" accept-charset="UTF-8" method="get" class="card">
+
+
       <!--input type="hidden" name="authenticity_token" type="<%= form_authenticity_token %>"-->
+
+
       <%# departure_airport %>
       <div class="form__item">
         <span>Depart: </span>
@@ -13,6 +17,8 @@
           <% end %>
         </select>
       </div>
+
+
       <%# arrival_airport %>
       <div class="form__item">
         <span>Arrive: </span>
@@ -22,6 +28,8 @@
           <% end %>
         </select>
       </div>
+
+
       <%# num_tickets %>
       <div class="form__item">
         <span># Travelers</span>
@@ -32,8 +40,15 @@
           <option value="4">4</option>
         </select>
       </div>
+
+
       <%# Flight date %>
-      <input type="date" name="date" id="" value="<%= Date.today %>" min="<%= Date.today %>" max="<%= Date.today + 30 %>">
+      <div class="form__item">
+        <span>Date of Depart.</span>
+        <input type="date" name="date" id="" value="<%= Date.today %>" min="<%= Date.today %>" max="<%= Date.today + 30 %>">
+      </div>
+
+
       <%# Submit %>
       <input type="submit" name="" value="Search Flights" class="btn">
     </form>
@@ -43,10 +58,11 @@
     <table class="table">
       <thead>
         <tr class="table__head">
-          <th>Depart</th>
-          <th>Arrive</th>
-          <th>Seats</th>
+          <th>Depart From</th>
+          <th>Arrive In</th>
+          <th>Seats Avail.</th>
           <th>Date</th>
+          <th>Action</th>
         </tr>
       </thead>
 
