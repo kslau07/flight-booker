@@ -2,8 +2,7 @@
 
 :root {
 	/* Font */
-	font-family: "Roboto Condensed";
-	color: var(--quaternary-color);
+	--font-family-sans: font-family: "Roboto Condensed";
 	--letter-spacing: 0.1rem;
 
 	/* Font Sizes */
@@ -18,13 +17,16 @@
 
 	/* Font Colors */
 	--font-color-white: var(--secondary-color);
+	--font-color-black: var(var(--quaternary-color))
 
 	/* Spacing */
+	--gap-xs: 				var(--space-xs);
 	--gap-s: 				var(--space-s);
 	--gap-m: 				var(--space-m);
 	--gap-l: 				var(--space-l);
 	--gap-xl: 				var(--space-xl);
 
+	--space-xs: 					 0.25rem;
 	--space-s: 						 0.50rem;
 	--space-m: 								1rem;
 	--space-l: 								2rem;

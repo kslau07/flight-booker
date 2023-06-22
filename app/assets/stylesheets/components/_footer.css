@@ -1,0 +1,21 @@
+.footer {
+	position: absolute;
+	display: grid;
+	grid-auto-columns: 1fr;
+	width: 100%;
+	bottom: 0px; /* Positions footer at bottom */
+}
+.footer__adornment {
+	background-color: var(--quinary-color);
+	height: var(--space-xs);
+}
+.footer__content {
+	background-color: var(--quaternary-color);
+	padding-top: var(--space-xs);
+	padding-bottom: var(--space-xs);
+	display: grid;
+	justify-content: center;
+}
+.footer_link{
+	color: var(--font-color-white);
+}

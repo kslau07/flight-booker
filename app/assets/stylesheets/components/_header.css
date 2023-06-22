@@ -1,28 +1,26 @@
 .header {
 	padding-left: var(--padding-l);
 	padding-right: var(--padding-l);
+}
+.header__brand-group {
 	display: grid;
 	grid-auto-flow: column;
 	justify-content: start;
 	align-items: center;
 	gap: var(--gap-s);
-
 	transition: transform 200ms;
 }
-.header:hover {
+.header__brand-group:hover {
 	transform: translate(1%, 0)
 }
-
 .header__logo {
 	--logo-size: 30px;
 	width: var(--logo-size);
 	height: var(--logo-size);
 	fill: var(--quaternary-color);
-
 }
 .header__brand-text {
 	color: var(--quinary-color);
 	font-size: var(--font-size-xxxl);
 	font-weight: bold;
 }
-

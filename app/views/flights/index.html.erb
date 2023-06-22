@@ -9,7 +9,7 @@
       <%# List of ALL departure airports %>
       <div class="form__item">
         <span>Depart: </span>
-        <select name="departure_airport_id" id="departure_airport_id">
+        <select name="departure_airport_id" id="departure_airport_id" class="form__select">
           <% @airports.each do |airport| %>
             <option value="<%= airport.id %>"><%= airport.code %></option>
           <% end %>
@@ -18,7 +18,7 @@
       <%# List of ALL arrival airports %>
       <div class="form__item">
         <span>Arrive: </span>
-        <select name="arrival_airport_id" id="arrival_airport_id">
+        <select name="arrival_airport_id" id="arrival_airport_id" class="form__select">
           <% @airports.each do |airport| %>
             <option value="<%= airport.id %>"><%= airport.code %></option>
           <% end %>
@@ -27,7 +27,7 @@
       <%# No. of passengers (1-4) %>
       <div class="form__item">
         <span># Travelers</span>
-        <select name="num_passengers" id="num_passengers">
+        <select name="flight[num_travelers]" id="num_passengers" class="form__select">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -36,9 +36,9 @@
       </div>
       <%# Flight date %>
 
-
 			<%# Submit %>
       <input type="submit" name="Commit" value="Search Flights" class="btn">
     </form>
   </div>
 </div>
+<%= render "footer" %>

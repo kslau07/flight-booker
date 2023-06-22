@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-airports = %i[ATL DFW DEN ORD LAX CLT MCO LAS PHX MIA SEA IAH JFK EWR FLL MSP SFO MI MA SLC]
+airports = %i[ATL DFW DEN ORD LAX CLT MCO LAS PHX MIA]
+# airports = %i[ATL DFW DEN ORD LAX CLT MCO LAS PHX MIA SEA IAH JFK EWR FLL MSP SFO MI MA SLC]
 Airport.create!(code: airports.pop) until airports.empty?
 
 @departure_airport = ''

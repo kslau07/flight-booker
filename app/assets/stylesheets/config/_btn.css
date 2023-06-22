@@ -1,4 +1,5 @@
 .btn {
+	height: var(--space-xl);
 	font-family: "Roboto Condensed";
 	color: var(--quinary-color);
 	font-size: var(--font-size-xl);
@@ -7,14 +8,16 @@
 	background-color: var(--primary-color);
 	border: 0;
 	border-radius: var(--border-radius);
-	padding-top: var(--padding-m);
-	padding-bottom: var(--padding-m);
 	padding-left: var(--padding-l);
 	padding-right: var(--padding-l);
 	box-shadow: var(--box-shadow-s);
+	align-self: center;
+	/* justify-self: right; */
+	/* max-width: max-content; */
 }
-.btn:active,
-.btn:hover {
+.btn:hover,
+.btn:focus,
+.btn:active {
 		color: var(--font-color-white);
 		transform: scale(1.04);
 		transform-origin: center;

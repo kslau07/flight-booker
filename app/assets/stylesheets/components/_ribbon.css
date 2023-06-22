@@ -8,7 +8,11 @@
 	color: var(--font-color-white);
 	background-color: var(--primary-color);
 }
-.ribbon__adornment {
-	background-color: var(--quaternary-color);
-	height: var(--font-size-m);
+.ribbon__adornment1 {
+	background-color: var(--tertiary-color);
+	height: var(--space-s);
+}
+.ribbon__adornment2 {
+	background-color: var(--quinary-color);
+	height: var(--space-s);
 }
