@@ -1,0 +1,15 @@
+.form {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: start;
+	gap: var(--gap-xl);
+	font-size: var(--font-size-l);
+	background-color: var(--bg-color-white);
+	padding: var(--padding-l);
+	box-shadow: var(--box-shadow-l);
+	border-radius: var(--border-radius);
+}
+.form__item {
+	display: grid;
+	gap: var(--gap-m);
+}

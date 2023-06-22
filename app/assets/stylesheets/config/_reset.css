@@ -1,0 +1,29 @@
+:root {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	background-color: var(--bg-color-off-white);
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+	margin: 0;
+}
+
+h1 {
+	font-size: var(--font-size-xxxxl);
+}
+
+a {
+	text-decoration: none;
+	color: var(--quinary-color);
+	transition: color 200ms;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: var(--primary-color);
+}

@@ -1,0 +1,23 @@
+.btn {
+	font-family: "Roboto Condensed";
+	color: var(--quinary-color);
+	font-size: var(--font-size-xl);
+	font-weight: bold;
+	letter-spacing: var(--letter-spacing);
+	background-color: var(--primary-color);
+	border: 0;
+	border-radius: var(--border-radius);
+	padding-top: var(--padding-m);
+	padding-bottom: var(--padding-m);
+	padding-left: var(--padding-l);
+	padding-right: var(--padding-l);
+	box-shadow: var(--box-shadow-s);
+}
+.btn:active,
+.btn:hover {
+		color: var(--font-color-white);
+		transform: scale(1.04);
+		transform-origin: center;
+		transition: 0.07s;
+		cursor: pointer;
+}

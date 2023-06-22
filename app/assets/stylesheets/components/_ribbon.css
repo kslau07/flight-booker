@@ -1,0 +1,14 @@
+.ribbon {
+}
+.ribbon__announcement {
+	display: grid;
+	place-content: center;
+	height: var(--space-l);
+	font-size: var(--font-size-l);
+	color: var(--font-color-white);
+	background-color: var(--primary-color);
+}
+.ribbon__adornment {
+	background-color: var(--quaternary-color);
+	height: var(--font-size-m);
+}

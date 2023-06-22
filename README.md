@@ -1,24 +1,22 @@
-# README
+# Odin Rails Project: flight-booker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Link to project specs can be found here:  
+> https://www.theodinproject.com/lessons/ruby-on-rails-flight-booker
 
-Things you may want to cover:
+> Link to deployed app @ fly.io (app may be offline)  
+> _link_
 
-* Ruby version
+## Screenshots
 
-* System dependencies
+<img src="app/assets/images/screenshot.png" width="300"/>
+<img src="app/assets/images/sketch.png" width="300"/>
 
-* Configuration
+## Description
 
-* Database creation
+We’ll be creating a one-way flight booker. You’ll get lots of practice populating and building dropdown menus, radio buttons, and nested submissions. Let the fun begin!
 
-* Database initialization
+## My Goals
 
-* How to run the test suite
+I hope to gain a better understanding of nested forms, `accepts_nested_attributes_for`, and model associations.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Thoughts After

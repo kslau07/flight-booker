@@ -1,0 +1,53 @@
+/* Color palette from https://coolors.co/palette/faa916-fbfffe-6d676e-1b1b1e-96031a */
+
+:root {
+	/* Font */
+	font-family: "Roboto Condensed";
+	color: var(--quaternary-color);
+	--letter-spacing: 0.1rem;
+
+	/* Font Sizes */
+	--font-size-xs: 		0.75rem;    /* 12px */
+	--font-size-s: 			0.875rem;   /* 14px */
+	--font-size-m: 			1rem;       /* 16px */
+	--font-size-l: 			1.125rem;   /* 18px */
+	--font-size-xl: 		1.25rem;    /* 20px */
+	--font-size-xxl: 		1.5rem;     /* 24px */
+	--font-size-xxxl: 	2rem;       /* 32px */
+	--font-size-xxxxl: 	2.5rem;     /* 40px */
+
+	/* Font Colors */
+	--font-color-white: var(--secondary-color);
+
+	/* Spacing */
+	--gap-s: 				var(--space-s);
+	--gap-m: 				var(--space-m);
+	--gap-l: 				var(--space-l);
+	--gap-xl: 				var(--space-xl);
+
+	--space-s: 						 0.50rem;
+	--space-m: 								1rem;
+	--space-l: 								2rem;
+	--space-xl: 							3rem;
+	--padding-m:							1rem;
+	--padding-l:							2rem;
+	--padding-xl:							3rem;
+
+	/* Background colors */
+	--bg-color-white: hsl(100, 100%, 100%);
+	--bg-color-off-white: hsl(100, 0%, 97%);
+
+	/* Color palette */
+	--primary-color: 				#FAA916;
+	--secondary-color: 	 	  #FBFFFE;
+	--tertiary-color: 			#6D676E;
+	--quaternary-color: 		#1B1B1E;
+	--quinary-color: 				#96031A;
+
+	/* Borders */
+	--border-radius: 0.50rem;
+
+	--box-shadow-s: 2px 2px 2px #ddd;
+	--box-shadow-l: 3px 3px 3px #ccc;
+}
+
