@@ -15,16 +15,21 @@
 .form__item {
 	display: grid;
 	gap: var(--gap-m);
+	text-align: center;
 }
 .form__select {
 	font-size: var(--font-size-l);
 	font-family: var(--font-family-sans);
+	text-align: center;
+	/* padding: 5px; */
+	padding: var(--padding-s);
 }
-.form__date-group {
+
+/* .form__date-group {
 	display: grid;
 	grid-auto-flow: column;
 	gap: var(--gap-s);
 }
 .form__select--max-content {
 	width: max-content;
-}
+} */

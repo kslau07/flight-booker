@@ -7,26 +7,19 @@ class Flight < ApplicationRecord
 
     query = sanitize_sql(query)
 
-    dep_aiport_id = Airport.find_by(code: query[:departure_code]).id
-    arr_airport_id = Airport.find_by(code: query[:arrival_code]).id
-
     # debugger                # delete me
-    
-    Flight.where('departure_airport_id = ?
-                  AND arrival_airport_id = ?', dep_aiport_id, arr_airport_id)
 
-    # Flight.where('departure_airport_id = ?
-    #   AND arrival_airport_id = ?
-    #   AND departure_airport_id = ?
-    #   AND departure_airport_id = ?', x, y, x, y)
-  
-    # Lets test if departs from DEN can be returned
-
-    # debugger if !query.empty?
+    dep_airport_id = Airport.find_by(code: query[:departure_code]).id unless query[:departure_code].nil?
+    arr_airport_id = Airport.find_by(code: query[:arrival_code]).id unless query[:arrival_code].nil?
 
     # sql = fields.map {|field| "#{field} LIKE ?"}.join(' OR ')
-    # parameters = fields.map {"%#{q}%"}
-    # where(sql, *parameters)
+    sql = []
+    sql << 'departure_airport_id = ?' unless query[:departure_code].nil?
+    sql << 'arrival_airport_id = ?' unless query[:arrival_code].nil?
+    sql = sql.join(' AND ')
+
+    parameters = [dep_airport_id, arr_airport_id].compact
+    Flight.where(sql, *parameters)
   end
 end
 
