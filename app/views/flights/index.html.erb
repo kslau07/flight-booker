@@ -4,16 +4,18 @@
   <div class="container">
     <form action="/flights" accept-charset="UTF-8" method="get" class="card">
 
-
       <!--input type="hidden" name="authenticity_token" type="<%= form_authenticity_token %>"-->
-
 
       <%# departure_airport %>
       <div class="form__item">
         <span>Depart: </span>
         <select name="departure_code" id="not_used" class="form__select">
           <% @airports.each do |airport| %>
-            <option value="<%= airport.code %>"><%= airport.code %></option>
+            <option value="<%= airport.code %>" 
+                  <%= "selected" if @query[:departure_code]  == airport.code %>
+            >
+                <%= airport.code %>
+            </option>
           <% end %>
         </select>
       </div>
@@ -24,7 +26,11 @@
         <span>Arrive: </span>
         <select name="arrival_code" id="not_used" class="form__select">
           <% @airports.each do |airport| %>
-            <option value="<%= airport.code %>"><%= airport.code %></option>
+            <option value="<%= airport.code %>"
+              <%= "selected" if @query[:arrival_code]  == airport.code %>
+            >
+              <%= airport.code %>
+            </option>
           <% end %>
         </select>
       </div>
@@ -34,10 +40,14 @@
       <div class="form__item">
         <span># Travelers</span>
         <select name="num_tickets" id="" class="form__select">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          <% 4.times do |index| %>
+            <option value="<%= index+1 %>"
+              <%= "selected" if @query[:num_tickets]  == (index+1).to_s %>
+            >
+              <%= index+1 %>
+            </option>
+          <% end %>
+
         </select>
       </div>
 
@@ -45,34 +55,79 @@
       <%# Flight date %>
       <div class="form__item">
         <span>Date of Depart.</span>
-        <input type="date" name="date" id="" value="<%= Date.today %>" min="<%= Date.today %>" max="<%= Date.today + 30 %>">
+        <div class="form__date">
+          <select name="month" class="form__select form__select--max-content">
+            <% @flight_months.each do |month| %>
+              
+              <option value="<%= month %>"
+                <%= "selected" if @query[:month]  == month %>
+                >
+                <%= month %>
+              </option>
+            <% end %>
+          </select>
+          <select name="day" class="form__select form__select--max-content">
+            <% @flight_days.each do |day| %>
+              
+              <option value="<%= day %>"
+                <%= "selected" if @query[:day]  == day %>
+                >
+                <%= day %>
+              </option>
+            <% end %>
+          </select>
+          <select name="year" class="form__select form__select--max-content">
+            <% @flight_years.each do |year| %>
+              <option value="<%= year %>" 
+                <%= "selected" if @query[:year]  == year %>
+                >
+                <%= year %>
+              </option>
+            <% end %>          
+          </select>
+          
+        </div>
       </div>
+
+
 
 
       <%# Submit %>
       <input type="submit" name="" value="Search Flights" class="btn">
     </form>
 
+
+
     <h4 class="matches">99999 flights matched:</h4>
 
     <table class="table">
       <thead>
         <tr class="table__head">
-          <th>Depart From</th>
-          <th>Arrive In</th>
+          <th>Departs From</th>
+          <th>Arrives In</th>
           <th>Seats Avail.</th>
           <th>Date</th>
+          <th>Flight Dur.</th>
           <th>Action</th>
         </tr>
       </thead>
 
     <tbody class="table__body">
+      <%= render @results if @results.is_a?(ActiveRecord::Relation) %>
+
+      <%# delete me %>
+      <tr class="table__head">
+      <th>Showing all flights</th>          
+      </tr>
       <%= render @flights %>
+      <%# delete me %>
+
+
     </tbody>
-      
-      
     </table>
+
   </div>
 </div>
 
 <%= render "footer" %>
+

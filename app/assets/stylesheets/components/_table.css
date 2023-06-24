@@ -5,9 +5,8 @@
 }
 .table__head {
 	/* Card properties */
-	/* padding: var(--card-padding); */
-	/* padding-left: var(--space-m); */
-	/* padding-right: var(--space-m); */
+	padding-left: var(--card-padding);
+	padding-right: var(--card-padding);
 	padding-top: var(--space-xs);
 	padding-bottom: var(--space-xs);
 	border-radius: var(--card-border-radius);
@@ -33,8 +32,8 @@
 }
 .table__row {
 	/* Card properties */
-	/* padding-left: var(--card-padding); */
-	/* padding-right: var(--card-padding); */
+	padding-left: var(--card-padding);
+	padding-right: var(--card-padding);
 	border-radius: var(--card-border-radius);
 	background-color: var(--card-bg-color);
 	box-shadow: var(--card-box-shadow);
