@@ -28,7 +28,7 @@
           <% @airports.each do |airport| %>
             <option value="<%= airport.code %>"
               <%= "selected" if @query[:arrival_code]  == airport.code %>
-            >
+              >
               <%= airport.code %>
             </option>
           <% end %>
@@ -53,41 +53,7 @@
 
 
       <%# Flight date %>
-      <div class="form__item">
-        <span>Date of Depart.</span>
-        <div class="form__date">
-          <select name="month" class="form__select form__select--max-content">
-            <% @flight_months.each do |month| %>
-              
-              <option value="<%= month %>"
-                <%= "selected" if @query[:month]  == month %>
-                >
-                <%= month %>
-              </option>
-            <% end %>
-          </select>
-          <select name="day" class="form__select form__select--max-content">
-            <% @flight_days.each do |day| %>
-              
-              <option value="<%= day %>"
-                <%= "selected" if @query[:day]  == day %>
-                >
-                <%= day %>
-              </option>
-            <% end %>
-          </select>
-          <select name="year" class="form__select form__select--max-content">
-            <% @flight_years.each do |year| %>
-              <option value="<%= year %>" 
-                <%= "selected" if @query[:year]  == year %>
-                >
-                <%= year %>
-              </option>
-            <% end %>          
-          </select>
-          
-        </div>
-      </div>
+      <div class="form__item"></div>
 
 
 
@@ -97,16 +63,18 @@
     </form>
 
 
-
-    <h4 class="matches">99999 flights matched:</h4>
-
+    <% if @results %>
+      <h3 class="matches"><%= @results.size %> flights matched:</h3>
+    <% end %>
+    
+    <% if @results && @results.any? %>
     <table class="table">
       <thead>
         <tr class="table__head">
           <th>Departs From</th>
           <th>Arrives In</th>
           <th>Seats Avail.</th>
-          <th>Date</th>
+          <th>Flight Date</th>
           <th>Flight Dur.</th>
           <th>Action</th>
         </tr>
@@ -115,19 +83,28 @@
     <tbody class="table__body">
       <%= render @results if @results.is_a?(ActiveRecord::Relation) %>
 
-      <%# delete me %>
-      <tr class="table__head">
-      <th>Showing all flights</th>          
-      </tr>
-      <%= render @flights %>
-      <%# delete me %>
+
 
 
     </tbody>
     </table>
+    <% end %>
 
   </div>
 </div>
 
 <%= render "footer" %>
 
+
+<%
+=begin %>
+
+<%# delete me %>
+      <tr class="table__head">
+      <th>Showing all flights</th>          
+      </tr>
+      <%= render @flights %>
+      <%# delete me %>
+<%
+=end %>
+      

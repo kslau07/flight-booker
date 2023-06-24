@@ -7,7 +7,7 @@
 			<%= flight.arrival_airport.code %>
 		</td>
 		<td class="table__data">
-			<%= rand(1..35) %>
+			<%= [rand(3..12), rand(1..45), ].sample %>
 		</td>
 		<td class="table__data">
 			<%= flight.start.strftime("%F") %>
