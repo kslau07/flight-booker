@@ -55,16 +55,13 @@
       <%# Flight date %>
       <div class="form__item"></div>
 
-
-
-
       <%# Submit %>
       <input type="submit" name="" value="Search Flights" class="btn">
     </form>
 
-
     <% if @results %>
-      <h3 class="matches"><%= @results.size %> flights matched:</h3>
+      <h3 class="matches">
+      <%= pluralize(@results.size, 'flight') %> matched:</h3>
     <% end %>
     
     <% if @results && @results.any? %>
