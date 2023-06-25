@@ -1,34 +1,30 @@
-num_flights_to_seed = 15
-
-def rand_seats_avail
-  [rand(3..12), rand(1..45)].sample
-end
-
-def rand_flight_duration
-  rand(1..7).to_s + "h" + rand(1..59).to_s + "m"
-end
-
+num_flights_to_seed = 99
 airports = %i[JFK MIA LAX SEA DEN ANC]
+
 Airport.create!(code: airports.pop) until airports.empty?
 
-@departure_airport = ''
-
-def random_departure_airport
-  @departure_airport = rand(1..Airport.count)
+def rand_seats_avail
+  [rand(1..3), rand(1..12), rand(1..33)].sample
 end
 
-def random_arrival_airport
-  remaining_airports = (1..Airport.count).to_a - [@departure_airport]
-  remaining_airports.sample
+@depart_id = ''
+
+def rand_depart_id
+  @depart_id = rand(1..Airport.count)
+end
+
+def rand_arrival_id
+  possible_arrival_ids = (1..Airport.count).to_a - [@depart_id]
+  possible_arrival_ids.sample
 end
 
 num_flights_to_seed.times do
-  Flight.create!(start: Time.now,
-                 flight_duration: rand_flight_duration,
+  Flight.create!(start: Date.today,
+                 flight_duration: nil,
                  seats_avail: rand_seats_avail,
-                 departure_airport_id: random_departure_airport,
-                 arrival_airport_id: random_arrival_airport)
+                 departure_airport_id: rand_depart_id,
+                 arrival_airport_id: rand_arrival_id)
 end
 
-p "Airport was seeded with #{Airport.count} records"
-p "Flight was seeded with #{Flight.count} records"
+puts "Airport was seeded with #{Airport.count} records"
+puts "Flight was seeded with #{Flight.count} records"

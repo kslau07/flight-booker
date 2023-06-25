@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-  before_action :update_flight_dates, :add_option_any, only: [:index]
+  before_action :futurize_past_flights, :add_option_any, only: [:index]
   
   def index
     @flights = Flight.all
@@ -38,10 +38,12 @@ class FlightsController < ApplicationController
     end
   end
 
-  # Update flight schedule to today onward
-  def update_flight_dates
-    Flight.all.each do |flight|
-      flight.update(start: Time.now + rand(1..45).days)
+  # Change date of past flights
+  def futurize_past_flights
+    past_flights = Flight.where('start <= :tomorrow', tomorrow: Date.tomorrow)
+
+    past_flights.each do |flight|
+      flight.update(start: Date.tomorrow + rand(1..45).days)
     end
   end
 end

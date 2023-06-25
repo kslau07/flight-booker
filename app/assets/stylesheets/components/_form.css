@@ -21,15 +21,5 @@
 	font-size: var(--font-size-l);
 	font-family: var(--font-family-sans);
 	text-align: center;
-	/* padding: 5px; */
 	padding: var(--padding-s);
 }
-
-/* .form__date-group {
-	display: grid;
-	grid-auto-flow: column;
-	gap: var(--gap-s);
-}
-.form__select--max-content {
-	width: max-content;
-} */

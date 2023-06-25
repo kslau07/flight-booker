@@ -1,11 +1,8 @@
-<%= render "ribbon" %>
 <%= render "header" %>
-<div class="page-container">
+<main class="main">
   <div class="container">
     <form action="/flights" accept-charset="UTF-8" method="get" class="card">
-
       <!--input type="hidden" name="authenticity_token" type="<%= form_authenticity_token %>"-->
-
       <%# departure_airport %>
       <div class="form__item">
         <span>Depart: </span>
@@ -14,13 +11,11 @@
             <option value="<%= airport.code %>" 
                   <%= "selected" if @query[:departure_code]  == airport.code %>
             >
-                <%= airport.code %>
+              <%= airport.code %>
             </option>
           <% end %>
         </select>
       </div>
-
-
       <%# arrival_airport %>
       <div class="form__item">
         <span>Arrive: </span>
@@ -34,8 +29,6 @@
           <% end %>
         </select>
       </div>
-
-
       <%# num_tickets %>
       <div class="form__item">
         <span># Travelers</span>
@@ -47,63 +40,34 @@
               <%= index+1 %>
             </option>
           <% end %>
-
         </select>
       </div>
-
-
       <%# Flight date %>
       <div class="form__item"></div>
-
-
-
-
       <%# Submit %>
       <input type="submit" name="" value="Search Flights" class="btn">
     </form>
-
-
     <% if @results %>
-      <h3 class="matches"><%= @results.size %> flights matched:</h3>
+      <h3 class="matched"><%= pluralize(@results.size, 'flight') + ' matched:' %></h3>
     <% end %>
-    
     <% if @results && @results.any? %>
-    <table class="table">
-      <thead>
-        <tr class="table__head">
-          <th>Departs From</th>
-          <th>Arrives In</th>
-          <th>Seats Avail.</th>
-          <th>Flight Date</th>
-          <th>Flight Dur.</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-
-    <tbody class="table__body">
-      <%= render @results if @results.is_a?(ActiveRecord::Relation) %>
-
-
-
-
-    </tbody>
-    </table>
+      <table class="table">
+        <thead>
+          <tr class="table__row table__header">
+            <th class="table__left-cell">Flight No.</th>
+            <th >Departs From</th>
+            <th>Arrives In</th>
+            <th>Seats Avail.</th>
+            <th>Flight Date</th>
+            <th>Flight Dur.</th>
+            <th class="table__right-cell">Select</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @results if @results.is_a?(ActiveRecord::Relation) %>
+        </tbody>
+      </table>
     <% end %>
-
   </div>
-</div>
-
+</main>
 <%= render "footer" %>
-
-<%
-=begin %>
-
-<%# delete me %>
-      <tr class="table__head">
-      <th>Showing all flights</th>          
-      </tr>
-      <%= render @flights %>
-      <%# delete me %>
-<%
-=end %>
-      

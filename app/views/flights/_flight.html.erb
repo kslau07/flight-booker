@@ -1,21 +1,24 @@
+<tr class="table__row">
+  <td class="table__left-cell">
+    <%= "FB" + "'00#{flight.id.to_s}"[-3..-1] %>
+  </td>
+	<td>
+    <%= flight.departure_airport.code %>
+  </td>
+  <td>
+    <%= flight.arrival_airport.code %>
+  </td>
+  <td>
+    <%= flight.seats_avail %>
+  </td>
+  <td>
+    <%= flight.start.strftime("%F") %>
+  </td>
+  <td>
+    <%= human_readable(flight.flight_duration) %>
+  </td>
 
-	<tr class="table__row">
-		<td class="table__data">
-			<%= flight.departure_airport.code %>
-		</td>
-		<td class="table__data">
-			<%= flight.arrival_airport.code %>
-		</td>
-		<td class="table__data">
-			<%= flight.seats_avail %>
-		</td>
-		<td class="table__data">
-			<%= flight.start.strftime("%F") %>
-		</td>
-		<td class="table__data">
-			<%= flight.flight_duration %>
-		</td>
-		<td class="table__data">
-			<input type="radio" id="" name="selection" value="1">
-		</td>
-	</tr>
+    <td class="table__right-cell">
+    <input type="radio" id="" name="selection" value="1">
+  </td>
+</tr>

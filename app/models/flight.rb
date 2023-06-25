@@ -1,31 +1,49 @@
 class Flight < ApplicationRecord
+  after_create :randomize_flight_duration
   belongs_to :departure_airport, class_name: 'Airport'
   belongs_to :arrival_airport, class_name: 'Airport'
 
+  scope :departing_from, ->(airport_id) { where('departure_airport_id = ?', airport_id) }
+  scope :arriving_at, ->(airport_id) { where('arrival_airport_id = ?', airport_id) }
+  scope :seats_avail, ->(num_tickets) { where('seats_avail >= ?', num_tickets) }
+  scope :starting_date, ->(date) { where('start = ?', date)}
+
   def self.search_by_fields(query)
     return if query.empty?
+    
+    Flight.seats_avail(query[:num_tickets])
+  end
 
-    query = sanitize_sql(query)
+  private
 
-    # debugger                # delete me
+  def rand_duration
+    rand(180..480) # in minutes
+  end
 
-    dep_airport_id = Airport.find_by(code: query[:departure_code]).id unless query[:departure_code].nil?
-    arr_airport_id = Airport.find_by(code: query[:arrival_code]).id unless query[:arrival_code].nil?
-
-    # sql = fields.map {|field| "#{field} LIKE ?"}.join(' OR ')
-    sql = []
-    sql << 'departure_airport_id = ?' unless query[:departure_code].nil?
-    sql << 'arrival_airport_id = ?' unless query[:arrival_code].nil?
-    sql = sql.join(' AND ')
-
-    parameters = [dep_airport_id, arr_airport_id].compact
-    Flight.where(sql, *parameters)
+  # For seeding
+  def randomize_flight_duration
+    update(flight_duration: rand_duration)
   end
 end
 
-<<~DELETE
-  delete me
-  irb(main):020:0> Airport.where('code = ?', 'MIA').pluck(:id).first
-  irb(main):031:0> Airport.find_by(code: 'MIA').id
+# delete me
+# irb(main):020:0> Airport.where('code = ?', 'MIA').pluck(:id).first
+# irb(main):031:0> Airport.find_by(code: 'MIA').id
 
-DELETE
+# def self.search_by_fields(query)
+#   return if query.empty?
+
+#   query = sanitize_sql(query)
+
+#   dep_airport_id = Airport.find_by(code: query[:departure_code]).id unless query[:departure_code].nil?
+#   arr_airport_id = Airport.find_by(code: query[:arrival_code]).id unless query[:arrival_code].nil?
+
+#   # sql = fields.map {|field| "#{field} LIKE ?"}.join(' OR ')
+#   sql = []
+#   sql << 'departure_airport_id = ?' unless query[:departure_code].nil?
+#   sql << 'arrival_airport_id = ?' unless query[:arrival_code].nil?
+#   sql = sql.join(' AND ')
+
+#   parameters = [dep_airport_id, arr_airport_id].compact
+#   Flight.where(sql, *parameters)
+# end

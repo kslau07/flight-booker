@@ -1,6 +1,8 @@
-.page-container {
+.main {
 	display: grid;
+	align-content: start;
 	justify-content: center;
 	padding-top: var(--space-l);
 	gap: var(--gap-l);
+	padding-bottom: var(--padding-l);
 }

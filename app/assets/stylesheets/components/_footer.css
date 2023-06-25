@@ -1,9 +1,8 @@
 .footer {
-	position: absolute;
 	display: grid;
 	grid-auto-columns: 1fr;
 	width: 100%;
-	bottom: 0px; /* Positions footer at bottom */
+	
 }
 .footer__adornment {
 	background-color: var(--quinary-color);

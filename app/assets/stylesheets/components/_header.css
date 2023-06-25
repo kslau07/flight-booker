@@ -1,14 +1,30 @@
 .header {
-	padding-left: var(--padding-l);
-	padding-right: var(--padding-l);
+}
+.header__announcement {
+	display: grid;
+	place-content: center;
+	background-color: var(--primary-color);
+	height: var(--space-l);
+	font-size: var(--font-size-l);
+	color: var(--font-color-white);
+}
+.header__stripe1 {
+	background-color: var(--tertiary-color);
+	height: var(--space-s);
+}
+.header__stripe2 {
+	background-color: var(--quinary-color);
+	height: var(--space-s);
 }
 .header__brand-group {
-	width: max-content;
 	display: grid;
-	grid-auto-flow: column;
-	justify-content: start;
-	align-items: center;
 	gap: var(--gap-s);
+	justify-content: start;
+	grid-auto-flow: column;
+	width: max-content;
+	align-items: center;
+	padding-left: var(--padding-l);
+	padding-right: var(--padding-l);
 	transition: transform 200ms;
 }
 .header__brand-group:hover {
@@ -19,6 +35,19 @@
 	width: var(--logo-size);
 	height: var(--logo-size);
 	fill: var(--quaternary-color);
+	
+	animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }
 .header__brand-text {
 	color: var(--quinary-color);

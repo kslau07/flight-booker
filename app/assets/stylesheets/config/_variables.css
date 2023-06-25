@@ -1,7 +1,6 @@
 /* Color palette from https://coolors.co/palette/faa916-fbfffe-6d676e-1b1b1e-96031a */
 
 :root {
-
 	/* Card properties */
 	--card-padding: var(--padding-l);
 	--card-border-radius: var(--border-radius);
@@ -43,8 +42,9 @@
 	--padding-xl:							3rem;
 
 	/* Background colors */
-	--bg-color-white: hsl(100, 100%, 100%);
-	--bg-color-off-white: hsl(100, 0%, 97%);
+	--bg-color-white: hsl(0, 0%, 100%);
+	--bg-color-off-white: hsl(0, 0%, 97%);
+	--bg-color-light-gray: hsl(0, 0%, 80%);
 
 	/* Color palette */
 	--primary-color: 						#FAA916;
@@ -59,4 +59,3 @@
 	--box-shadow-s: 2px 2px 2px #ddd;
 	--box-shadow-l: 3px 3px 3px #ccc;
 }
-
