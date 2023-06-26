@@ -12,14 +12,11 @@
 	padding-right: var(--padding-l);
 	box-shadow: var(--box-shadow-s);
 	align-self: center;
-	/* justify-self: right; */
-	/* max-width: max-content; */
 }
 .btn:hover,
 .btn:focus,
 .btn:active {
 		color: var(--font-color-white);
-		/* background-color: var(--primary-color-rotate); */
 		filter: hue-rotate(-15deg) saturate(1.8);
 		transform: scale(1.04);
 		transform-origin: center;

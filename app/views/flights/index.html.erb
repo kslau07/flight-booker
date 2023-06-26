@@ -2,14 +2,15 @@
 <main class="main">
   <div class="container">
     <form action="/flights" accept-charset="UTF-8" method="get" class="card">
-      <!--input type="hidden" name="authenticity_token" type="<%= form_authenticity_token %>"-->
+      <input type="hidden" name="authenticity_token" type="<%= form_authenticity_token %>">
       <%# departure_airport %>
       <div class="form__item">
         <span>Depart: </span>
         <select name="departure_code" id="not_used" class="form__select">
+          <option value="ANY">ANY</option>
           <% @airports.each do |airport| %>
             <option value="<%= airport.code %>" 
-                  <%= "selected" if @query[:departure_code]  == airport.code %>
+                  <%= "selected" if @search_params[:departure_code]  == airport.code %>
             >
               <%= airport.code %>
             </option>
@@ -20,9 +21,10 @@
       <div class="form__item">
         <span>Arrive: </span>
         <select name="arrival_code" id="not_used" class="form__select">
+          <option value="ANY">ANY</option>
           <% @airports.each do |airport| %>
             <option value="<%= airport.code %>"
-              <%= "selected" if @query[:arrival_code]  == airport.code %>
+              <%= "selected" if @search_params[:arrival_code]  == airport.code %>
               >
               <%= airport.code %>
             </option>
@@ -35,7 +37,7 @@
         <select name="num_tickets" id="" class="form__select">
           <% 4.times do |index| %>
             <option value="<%= index+1 %>"
-              <%= "selected" if @query[:num_tickets]  == (index+1).to_s %>
+              <%= "selected" if @search_params[:num_tickets]  == (index+1).to_s %>
             >
               <%= index+1 %>
             </option>
@@ -43,31 +45,47 @@
         </select>
       </div>
       <%# Flight date %>
-      <div class="form__item"></div>
+      <div class="form__item">
+        <span>Depart Date</span>
+        <select name="start" class="form__select">
+          <option value="ANY">ANY</option>
+          <% @flight_dates.each do |flight_date| %>
+            <option value="<%= flight_date %>"
+              <%= "selected" if @search_params[:start]  == flight_date.to_s %>
+            >
+            <%= flight_date.strftime('%B, %d, %Y') %></option>
+
+          <% end %>
+        </select>
+      </div>
       <%# Submit %>
       <input type="submit" name="" value="Search Flights" class="btn">
     </form>
-    <% if @results %>
-      <h3 class="matched"><%= pluralize(@results.size, 'flight') + ' matched:' %></h3>
+    <% if @query_results %>
+      <h3 class="matched"><%= pluralize(@query_results.size, 'flight') + ' matched:' %></h3>
     <% end %>
-    <% if @results && @results.any? %>
+    <% if @query_results && @query_results.none? %>
+      <h3 class="no_matches">No flights matched your criteria. Please try again.</h3>
+    <% end %>
+    <% if @query_results && @query_results.any? %>
       <table class="table">
         <thead>
           <tr class="table__row table__header">
-            <th class="table__left-cell">Flight No.</th>
-            <th >Departs From</th>
-            <th>Arrives In</th>
+            <th class="table__left-cell">Select</th>
+            <th>Flight No.</th>
+            <th>Departs From</th>
+            <th>Arrives At</th>
             <th>Seats Avail.</th>
             <th>Flight Date</th>
-            <th>Flight Dur.</th>
-            <th class="table__right-cell">Select</th>
+            <th class="table__right-cell">Flight Dur.</th>
           </tr>
         </thead>
         <tbody>
-          <%= render @results if @results.is_a?(ActiveRecord::Relation) %>
+          <%= render @query_results if @query_results.is_a?(ActiveRecord::Relation) %>
         </tbody>
       </table>
     <% end %>
   </div>
 </main>
+
 <%= render "footer" %>

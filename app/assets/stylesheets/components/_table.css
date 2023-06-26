@@ -31,3 +31,8 @@
 	padding-top: var(--space-xl);
 	padding-bottom: var(--space-m);
 }
+.no_matches {
+	padding-top: var(--space-l);
+	text-align: center;
+	color: var(--quinary-color);
+}

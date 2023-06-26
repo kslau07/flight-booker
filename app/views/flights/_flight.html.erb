@@ -1,5 +1,8 @@
 <tr class="table__row">
   <td class="table__left-cell">
+    <input type="radio" id="" name="selection" value="1" class="form__radio-button">
+  </td>
+  <td>
     <%= "FB" + "'00#{flight.id.to_s}"[-3..-1] %>
   </td>
 	<td>
@@ -14,11 +17,7 @@
   <td>
     <%= flight.start.strftime("%F") %>
   </td>
-  <td>
+  <td class="table__right-cell">
     <%= human_readable(flight.flight_duration) %>
-  </td>
-
-    <td class="table__right-cell">
-    <input type="radio" id="" name="selection" value="1">
   </td>
 </tr>
