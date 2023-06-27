@@ -1,4 +1,4 @@
-num_flights_to_seed = 99
+num_flights_to_seed = 15
 airports = %i[JFK MIA LAX SEA DEN ANC]
 
 Airport.create!(code: airports.pop) until airports.empty?
@@ -19,11 +19,15 @@ def rand_arrival_id
 end
 
 num_flights_to_seed.times do
-  Flight.create!(start: Date.today,
+  f = Flight.new(start: Date.today,
                  flight_duration: nil,
                  seats_avail: rand_seats_avail,
                  departure_airport_id: rand_depart_id,
                  arrival_airport_id: rand_arrival_id)
+
+  f.assign_attributes(departure_code: Airport.find(f.departure_airport_id).code,
+                          arrival_code: Airport.find(f.arrival_airport_id).code)
+  f.save!
 end
 
 puts "Airport was seeded with #{Airport.count} records"

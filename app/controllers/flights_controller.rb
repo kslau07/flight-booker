@@ -1,31 +1,32 @@
 class FlightsController < ApplicationController
   before_action :futurize_past_flights, only: [:index]
-  
+  helper_method :search_params
+
   def index
-    # @flights = Flight.all
-
-    @airports = Airport.all.order(
-      Arel.sql(<<-SQL.squish
-        CASE
-          WHEN id='0' THEN '0'
-          ELSE '1'
-        END ASC, code ASC
-      SQL
-      )
-    )
-
-    @search_params = search_params
+    @airport_codes = Airport.order(code: :asc).pluck(:code)
     @flight_dates = Flight.order(start: :asc).pluck('distinct start')
-    @query_results = Flight.search_by_fields(search_params)
+    @search_params = search_params
+
+
+    # @query_results = Flight.order(sort_column)
+
+
+    @query_results = Flight.search_by_fields(search_params)&.order(sort_column)
   end
 
   private
 
+  def sort_column
+    search_params[:sort_col] || :start # delete me
+    # search_params[:sort_col] || :id # default is flight.id
+  end
+
+  def foo
+    search_params
+  end
+
   def search_params
-    params.permit(:departure_code, :arrival_code, :num_tickets, :start).delete_if do |key, val|
-      # remove query param if "ANY" selected
-      val == 'ANY'
-    end
+    params.permit(:departure_code, :arrival_code, :num_tickets, :start, :sort_col)
   end
 
   # Change date of past flights

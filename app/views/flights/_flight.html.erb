@@ -12,12 +12,12 @@
     <%= flight.arrival_airport.code %>
   </td>
   <td>
-    <%= flight.seats_avail %>
-  </td>
-  <td>
     <%= flight.start.strftime("%F") %>
   </td>
-  <td class="table__right-cell">
+  <td>
     <%= human_readable(flight.flight_duration) %>
+  </td>
+  <td class="table__right-cell">
+    <%= flight.seats_avail %>
   </td>
 </tr>
