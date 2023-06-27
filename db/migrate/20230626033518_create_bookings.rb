@@ -6,7 +6,7 @@ class CreateBookings < ActiveRecord::Migration[7.0]
       t.string :departure_code
       t.string :arrival_code
       t.string :start
-      
+
       t.timestamps
     end
   end

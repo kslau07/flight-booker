@@ -36,3 +36,21 @@
 	text-align: center;
 	color: var(--quinary-color);
 }
+
+/* Sorting */
+.current {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.asc {
+	background: no-repeat right;
+	background-image: url("asc.svg");
+	background-size: 20px;
+}
+.desc {
+	background: no-repeat right;
+	background-image: url("desc.svg");
+	background-size: 20px;
+}
+
