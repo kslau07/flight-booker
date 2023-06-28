@@ -25,10 +25,12 @@
 		box-shadow: var(--box-shadow-l);
 }
 .btn--small {
-	height: var(--space-l);
+	padding: var(--padding-m) var(--padding-xl);
 	background-color: var(--quinary-color);
 	font-size: var(--font-size-m);
 	color: var(--font-color-white);
+	
+	box-shadow: var(--box-shadow-l);
 }
 .btn--small:hover,
 .btn--small:focus,

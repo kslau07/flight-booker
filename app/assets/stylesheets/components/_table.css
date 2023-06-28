@@ -1,6 +1,7 @@
 .table {
   border-collapse: separate;
   border-spacing: 0 var(--space-s);
+	width: 100%;
 }
 .table__row {
 	height: 45px;
@@ -17,7 +18,6 @@
 	top: var(--space-s);
 	z-index: 0;
 }
-
 .table__left-cell {
 	border-top-left-radius: var(--card-border-radius);
 	border-bottom-left-radius: var(--card-border-radius);
@@ -25,32 +25,35 @@
 .table__right-cell {
 	border-top-right-radius: var(--card-border-radius);
 	border-bottom-right-radius: var(--card-border-radius);
+	padding-right: var(--padding-m);
 }
 .matched {
-	text-align: right;
 	padding-top: var(--space-xl);
 	padding-bottom: var(--space-m);
+	text-align: right;
+	letter-spacing: 0.025rem;
 }
 .no_matches {
 	padding-top: var(--space-l);
 	text-align: center;
 	color: var(--quinary-color);
+	letter-spacing: 0.025rem;
 }
 
 /* Sorting */
 .current {
-  padding-right: 20px;
+  padding-right: 24px;
   background-repeat: no-repeat;
   background-position: right center;
 }
 .asc {
 	background: no-repeat right;
 	background-image: url("asc.svg");
-	background-size: 20px;
+	background-size: 24px;
 }
 .desc {
 	background: no-repeat right;
 	background-image: url("desc.svg");
-	background-size: 20px;
+	background-size: 24px;
 }
 

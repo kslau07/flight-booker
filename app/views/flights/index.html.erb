@@ -1,10 +1,10 @@
-<%= render "header" %>
 <main class="main">
   <div class="container">
+    <h2>ONE-WAY TRIP SEARCH</h2>
     <form action="/flights" accept-charset="UTF-8" method="get" class="card">
-      <div class="form__item">
+      <div class="query-form__item">
         <span>Depart: </span>
-        <select name="departure_code" id="" class="form__select">
+        <select name="departure_code" id="" class="query-form__select">
           <option>ANY</option>
           <% @airport_codes.each do |airport_code| %>
             <option value="<%= airport_code %>" 
@@ -15,9 +15,9 @@
           <% end %>
         </select>
       </div>
-      <div class="form__item">
+      <div class="query-form__item">
         <span>Arrive: </span>
-        <select name="arrival_code" id="" class="form__select">
+        <select name="arrival_code" id="" class="query-form__select">
           <option>ANY</option>
           <% @airport_codes.each do |airport_code| %>
             <option value="<%= airport_code %>"
@@ -28,9 +28,9 @@
           <% end %>
         </select>
       </div>
-      <div class="form__item">
+      <div class="query-form__item">
         <span># Travelers</span>
-        <select name="num_tickets" id="" class="form__select">
+        <select name="num_tickets" id="" class="query-form__select">
           <% 4.times do |index| %>
             <option value="<%= index+1 %>"
               <%= "selected" if @search_params[:num_tickets]  == (index+1).to_s %>
@@ -40,9 +40,9 @@
           <% end %>
         </select>
       </div>
-      <div class="form__item">
+      <div class="query-form__item">
         <span>Depart Date</span>
-        <select name="start" id="" class="form__select">
+        <select name="start" id="" class="query-form__select">
           <option>ANY</option>
           <% @flight_dates.each do |flight_date| %>
             <option value="<%= flight_date %>"
@@ -61,37 +61,29 @@
       <h3 class="no_matches">No flights matched your criteria. Please try again.</h3>
     <% end %>
     <% if @query_results && @query_results.any? %>
-        <form action="/bookings/new" accept-charset="UTF-8" method="get">
-          <input type="hidden" name="num_tickets" value="3" autocomplete="off">
-          <input type="radio" id="" name="flight_id" value="1">
-          <input type="radio" id="" name="flight_id" value="2">
-          <input type="radio" id="" name="flight_id" value="3">
-          <input name="commit" type="submit" value="Submit" class="btn"/>
-        </form>
-      <table class="table">
-        <thead>
-          <tr class="table__row table__header">
-            <th class="table__left-cell">Select</th>
-            <th><%= sortable "id", "Flight No." %></th>
-            <th><%= sortable "departure_code", "Departs From" %></th>
-            <th><%= sortable "arrival_code", "Arrives At" %></th>
-            <th><%= sortable "start", "Flight Date" %></th>
-            <th><%= sortable "flight_duration", "Flight Dur." %></th>
-            <th class="table__right-cell"><%= sortable "seats_avail", "Seats Avail." %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render @query_results if @query_results.is_a?(ActiveRecord::Relation) %>
-        </tbody>
-      </table>
+      <form action="/bookings/new" accept-charset="UTF-8" method="get" class="table-form">
+        <% if @query_results.count > 17 %>
+          <input type="submit" value="Continue" class="btn btn--small"/>
+        <% end %>
+        <table class="table">
+          <thead>
+            <tr class="table__row table__header">
+              <th class="table__left-cell"><%= sortable "id", "Flight No." %></th>
+              <th><%= sortable "departure_code", "Departs From" %></th>
+              <th><%= sortable "arrival_code", "Arrives At" %></th>
+              <th><%= sortable "start", "Flight Date" %></th>
+              <th><%= sortable "flight_duration", "Flight Dur." %></th>
+              <th><%= sortable "seats_avail", "Seats Avail." %></th>
+              <th class="table__right-cell">Select</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @query_results if @query_results.is_a?(ActiveRecord::Relation) %>
+          </tbody>
+        </table>
+        <input type="hidden" name="num_tickets" value="<%= search_params[:num_tickets] %>">
+        <input type="submit" value="Continue" class="btn btn--small btn--right">
+      </form>
     <% end %>
   </div>
 </main>
-<form class="" action="/bookings/new" accept-charset="UTF-8" method="get">
-  <input type="hidden" name="num_tickets" value="3" autocomplete="off" />
-  <input type="radio" id="" name="flight_id" value="1" >
-  <input type="radio" id="" name="flight_id" value="2" >
-  <input type="radio" id="" name="flight_id" value="3" >
-  <input type="submit" class="btn">
-</form>
-<%= render "footer" %>

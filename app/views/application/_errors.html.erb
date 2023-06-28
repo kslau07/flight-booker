@@ -1,0 +1,20 @@
+<% if active_record_object.errors.any? %>
+  <div class="booking-form__error">
+    <h2 class="booking-form__error-title">
+      <%= active_record_object.errors.count == 1 ? "1 item requires" : "Some items require" %>
+      your attention 
+    </h2>
+    <ul class="booking-form__error-list">
+      <% active_record_object.errors.full_messages_for("passengers.name").each do |message| %>
+        <% message.sub! 'Passengers', 'Passenger' %>
+        <% message.sub! 'can\'t', 'mustn\'t' %>
+        <li><strong><%= message %></strong></li>
+      <% end %>
+      <% active_record_object.errors.full_messages_for("passengers.email").each do |message| %>
+        <% message.sub! 'Passengers', 'Passenger' %>
+        <% message.sub! 'can\'t', 'mustn\'t' %>
+        <li><strong><%= message %></strong></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

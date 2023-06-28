@@ -3,3 +3,8 @@
 	gap: var(--gap-m);
 	width: 80vw;
 }
+
+.container--small {
+	width: 50vw;
+
+}

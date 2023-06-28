@@ -1,0 +1,11 @@
+<main class="page-container">
+	/bookings/:id
+	
+	<h2><%= @booking.flight_id %></h2>
+	<h2><%= @booking.num_tickets %></h2>
+	
+	<% @booking.passengers.each do |passenger| %>
+		<h3><%= passenger.name %></h3>
+		<h3><%= passenger.email %></h3>
+	<% end %>
+</main>

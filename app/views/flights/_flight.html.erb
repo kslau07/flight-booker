@@ -1,8 +1,5 @@
 <tr class="table__row">
   <td class="table__left-cell">
-    <input type="radio" id="<%= dom_id(flight) %>" name="flight_id" value="<%= flight.id %>" class="form__radio-button">
-  </td>
-  <td>
     <%= "FB" + "'00#{flight.id.to_s}"[-3..-1] %>
   </td>
   <td>
@@ -17,7 +14,10 @@
   <td>
     <%= to_hrs_mins(flight.flight_duration) %>
   </td>
-  <td class="table__right-cell">
+  <td>
     <%= flight.seats_avail %>
+  </td>
+  <td class="table__right-cell">
+    <input type="radio" id="<%= dom_id(flight) %>" name="flight_id" value="<%= flight.id %>" class="query-form__radio-button">
   </td>
 </tr>

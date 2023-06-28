@@ -1,18 +1,22 @@
 .header {
 }
 .header__announcement {
+	background-color: var(--primary-color);
 	display: grid;
 	place-content: center;
-	background-color: var(--primary-color);
 	height: var(--space-l);
 	font-size: var(--font-size-l);
 	color: var(--font-color-white);
 }
 .header__stripe1 {
-	background-color: var(--tertiary-color);
+	background-color: var(--primary-color);
 	height: var(--space-s);
 }
 .header__stripe2 {
+	background-color: var(--tertiary-color);
+	height: var(--space-s);
+}
+.header__stripe3 {
 	background-color: var(--quinary-color);
 	height: var(--space-s);
 }
@@ -31,7 +35,7 @@
 	transform: translate(6%, 0)
 }
 .header__logo {
-	--logo-size: 30px;
+	--logo-size: 35px;
 	width: var(--logo-size);
 	height: var(--logo-size);
 	fill: var(--quaternary-color);
@@ -42,6 +46,20 @@
   animation-timing-function: linear; 
 }
 @keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(-360deg);
+    }
+}
+.header__logo:hover {
+	animation-name: spin-reverse;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+@keyframes spin-reverse {
     from {
         transform:rotate(0deg);
     }

@@ -1,0 +1,34 @@
+.booking-form__details-container {
+  outline: 1px solid var(--tertiary-color);
+  padding: var(--padding-m);
+  border-radius: var(--border-radius);
+}
+
+.booking-form__details-content {
+  display: grid;
+  gap: var(--gap-s);
+  padding: var(--padding-m);
+}
+
+.booking-form__error {
+  color: var(--error-color);
+  background-color: var(--error-bg-color);
+  padding: var(--padding-l);
+  border-radius: var(--border-radius);
+}
+.booking-form__error-title {
+	color: var(--error-title);
+  padding-bottom: var(--space-m);
+}
+.booking-form__error-list {
+	display: grid;
+	gap: var(--gap-s);
+}
+.booking-form__input {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-sz-m);
+  letter-spacing: 0.05rem;
+  color: navy;
+  padding: var(--space-s);
+  max-width: 25rem;
+}

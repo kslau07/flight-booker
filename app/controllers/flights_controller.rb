@@ -14,7 +14,7 @@ class FlightsController < ApplicationController
   private
 
   def sort_column
-    search_params[:sort_col] ||= 'id'
+    search_params[:sort_col] ||= 'id' # set default
   end
 
   def sort_direction

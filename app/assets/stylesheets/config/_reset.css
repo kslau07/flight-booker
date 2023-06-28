@@ -1,6 +1,7 @@
 :root {
 	height: 100%;
 	font-family: "Roboto Condensed";
+	font-size: 1.1rem;
 	color: var(--quaternary-color);
 }
 body {
@@ -27,4 +28,9 @@ a:hover,
 a:focus,
 a:active {
 	color: var(--primary-color);
+}
+
+ul,
+li {
+	margin:0;
 }

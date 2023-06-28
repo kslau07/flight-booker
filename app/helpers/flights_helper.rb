@@ -1,23 +1,16 @@
 module FlightsHelper
   def sortable(column, title = nil)
-
-    #delete me
-    #    <th><%= sortable "departure_code", "Departs From" %></th>
-    #    <th><%= sortable "arrival_code", "Arrives At" %></th>
-
     title ||= column.titleize
-    sort_col = column.to_sym
+    sort_col = column
     direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
-
     css_class = column == sort_column ? "current #{sort_direction}" : nil
-    
+
     link_to title, flights_path(departure_code: search_params[:departure_code],
                                 arrival_code: search_params[:arrival_code],
                                 num_tickets: search_params[:num_tickets],
                                 start: search_params[:start],
                                 sort_col: sort_col,
                                 direction: direction), { class: css_class }
-                    
   end
 
   def to_hrs_mins(minutes)

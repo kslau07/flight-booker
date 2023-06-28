@@ -23,7 +23,7 @@
 
 	/* Font Colors */
 	--font-color-white: var(--secondary-color);
-	--font-color-black: var(var(--quaternary-color))
+	--font-color-black: var(--quaternary-color);
 
 	/* Spacing */
 	--gap-xs: 				var(--space-xs);
@@ -52,6 +52,14 @@
 	--tertiary-color: 					#6D676E;
 	--quaternary-color: 				#1B1B1E;
 	--quinary-color: 						#96031A;
+
+	/* Errors */
+	--error-title: darkred;
+	/* --error-title: indianred; */
+	--error-color: lightcoral;
+	/* --error-color: indianred; */
+	--error-bg-color: mistyrose;
+	
 
 	/* Borders */
 	--border-radius: 0.50rem;
