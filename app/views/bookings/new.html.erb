@@ -2,42 +2,45 @@
   <div class="container container--small">
     <form action="/bookings" accept-charset="UTF-8" method="post" class="card card--special">
       <%= render "errors", active_record_object: @booking %>
-      <h1>New Flight Booking</h1>
+      <h1>Continue Booking Trip</h1>
       <div class="booking-form__details-container">
-        <h2>Flight Details</h2>
+        <h2>Booking Details</h2>
         <div class="booking-form__details-content">
           <h3>Number of tickets requested:</h3>
-          <span><%= pluralize(@num_tickets, 'ticket')  %></span>
+          <span>&nbsp;&nbsp;<%= pluralize(@num_tickets, 'ticket')  %></span>
           <h3>Departure Date:</h3>
-          <span><%= @flight.start.strftime('%B, %d, %Y') %></span>
+          <span>&nbsp;&nbsp;<%= @flight.start.strftime('%B, %d, %Y') %></span>
           <h3>Departs from:</h3>
-          <span><%= @flight.departure_code %></span>
+          <span>&nbsp;&nbsp;<%= @flight.departure_code %></span>
           <h3>Arrives at:</h3>
-          <span><%= @flight.arrival_code %></span>
+          <span>&nbsp;&nbsp;<%= @flight.arrival_code %></span>
           <h3>Flight Duration:</h3>
-          <span><%= to_hrs_mins(@flight.flight_duration) %></span>
+          <span>&nbsp;&nbsp;<%= to_hrs_mins(@flight.flight_duration) %></span>
         </div>
       </div>
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off">
-      <% @num_tickets.to_i.times do |num| %>
+      <h3>Please enter passenger information: </h3>
+      <% @num_tickets.to_i.times do |ticket_no| %>
         <div class="booking-form__details-container">
-        <h2>Passenger #<%= num + 1 %> Data:</h2>
+          <h2>Passenger #<%= ticket_no + 1 %></h2>
           <div class="booking-form__details-content">
-
-            <input type="text" name="booking[passengers_attributes][<%= num %>][name]" id="booking_passengers_attributes_<%= num %>_name" class="booking-form__input" />
-            <label for="booking_passengers_attributes_<%= num %>_name">Name</label>
-          
+            <input type="text" name="booking[passengers_attributes][<%= ticket_no %>][name]" 
+                   id="booking_passengers_attributes_<%= ticket_no %>_name"
+                   class="booking-form__input<%= " red-box " if @booking.errors.any? {|e| e.attribute.to_s.include?('name')} %>"
+                   value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:name] if @booking_params %>">
+            <label for="booking_passengers_attributes_<%= ticket_no %>_name">Name</label>
           </div>
           <div class="booking-form__details-content">
-          
-            <input type="text" email="booking[passengers_attributes][<%= num %>][email]" id="booking_passengers_attributes_<%= num %>_email" class="booking-form__input" />
-            <label for="booking_passengers_attributes_<%= num %>_email">Email</label>
-          
+            <input type="text" name="booking[passengers_attributes][<%= ticket_no %>][email]" 
+                   id="booking_passengers_attributes_<%= ticket_no %>_email"
+                   class="booking-form__input<%= " red-box " if @booking.errors.any? {|e| e.attribute.to_s.include?('email')} %>"
+                   value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:email] if @booking_params %>">
+            <label for="booking_passengers_attributes_<%= ticket_no %>_email">Email</label>
           </div>
         </div>
       <% end %>
-      <input type="hidden" name="booking[num_tickets]" value="<%= params[:num_tickets] %>">
-      <input type="hidden" name="booking[flight_id]" value="<%= params[:flight_id] %>">
+      <input type="hidden" name="booking[num_tickets]" value="<%= @num_tickets %>">
+      <input type="hidden" name="booking[flight_id]" value="<%= @flight.id %>">
       <input type="submit" value="Book Flight!" class="btn">
     </form>
   </div>

@@ -2,6 +2,7 @@
   outline: 1px solid var(--tertiary-color);
   padding: var(--padding-m);
   border-radius: var(--border-radius);
+  background-color: var(--bg-color-white);
 }
 
 .booking-form__details-content {
@@ -31,4 +32,8 @@
   color: navy;
   padding: var(--space-s);
   max-width: 25rem;
+}
+
+.red-box {
+  outline: 3px dashed var(--primary-color);             /* delete me */
 }

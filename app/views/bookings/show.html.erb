@@ -1,11 +1,33 @@
-<main class="page-container">
-	/bookings/:id
-	
-	<h2><%= @booking.flight_id %></h2>
-	<h2><%= @booking.num_tickets %></h2>
-	
-	<% @booking.passengers.each do |passenger| %>
-		<h3><%= passenger.name %></h3>
-		<h3><%= passenger.email %></h3>
-	<% end %>
+<main class="main">
+  <h2>Your trip has been booked!</h2>
+<div class="card card--special">
+  <h1>Here is your flight and ticket information:</h1>
+  <div class="booking-form__details-container">
+    <h2>Passenger Information</h2>
+    <div class="booking-form__details-content">
+      <% @booking.passengers.each_with_index do |passenger, index| %>
+        <h3>Passenger #<%= index + 1 %></h3>
+        <div class="booking-form__details-container">
+          <p>Name: <strong><%= passenger.name %></strong></p>
+          <p>Email: <strong><%= passenger.email %></strong></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="booking-form__details-container">
+    <h2>Flight Details</h2>
+    <div class="booking-form__details-content">
+      <h3>Number of tickets purchased:</h3>
+      <span>&nbsp;&nbsp;<%= pluralize(@booking.num_tickets, 'ticket')  %></span>
+      <h3>Departure Date:</h3>
+      <span>&nbsp;&nbsp;<%= @booking.flight.start.strftime('%B, %d, %Y') %></span>
+      <h3>Departs from:</h3>
+      <span>&nbsp;&nbsp;<%= @booking.flight.departure_code %></span>
+      <h3>Arrives at:</h3>
+      <span>&nbsp;&nbsp;<%= @booking.flight.arrival_code %></span>
+      <h3>Flight Duration:</h3>
+      <span>&nbsp;&nbsp;<%= to_hrs_mins(@booking.flight.flight_duration) %></span>
+    </div>
+  </div>
+  </div>
 </main>
