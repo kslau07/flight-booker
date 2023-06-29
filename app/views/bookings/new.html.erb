@@ -1,8 +1,33 @@
 <main class="main">
   <div class="container container--small">
     <form action="/bookings" accept-charset="UTF-8" method="post" class="card card--special">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off">
       <%= render "errors", active_record_object: @booking %>
       <h1>Continue Booking Trip</h1>
+      <h3>Please enter passenger information: </h3>
+      <% @num_tickets.to_i.times do |ticket_no| %>
+        <div class="booking-form__details-container">
+          <h2>Passenger #<%= ticket_no + 1 %></h2>
+          <div class="booking-form__details-content">
+            <input type="text" name="booking[passengers_attributes][<%= ticket_no %>][name]" 
+                   id="booking_passengers_attributes_<%= ticket_no %>_name"
+                   class="booking-form__input<%= " booking-form__field-error " if @booking.errors.any? {|e| e.attribute.to_s.include?('name')} %>"
+                   value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:name] if @booking_params %>"
+                   required >
+            <label for="booking_passengers_attributes_<%= ticket_no %>_name">Name</label>
+          </div>
+          <div class="booking-form__details-content">
+            <input type="text" name="booking[passengers_attributes][<%= ticket_no %>][email]" 
+                   id="booking_passengers_attributes_<%= ticket_no %>_email"
+                   class="booking-form__input<%= " booking-form__field-error " if @booking.errors.any? {|e| e.attribute.to_s.include?('email')} %>"
+                   value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:email] if @booking_params %>"
+                   required >
+            <label for="booking_passengers_attributes_<%= ticket_no %>_email">Email</label>
+          </div>
+        </div>
+      <% end %>
+      <input type="hidden" name="booking[num_tickets]" value="<%= @num_tickets %>">
+      <input type="hidden" name="booking[flight_id]" value="<%= @flight.id %>">
       <div class="booking-form__details-container">
         <h2>Booking Details</h2>
         <div class="booking-form__details-content">
@@ -18,29 +43,6 @@
           <span>&nbsp;&nbsp;<%= to_hrs_mins(@flight.flight_duration) %></span>
         </div>
       </div>
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off">
-      <h3>Please enter passenger information: </h3>
-      <% @num_tickets.to_i.times do |ticket_no| %>
-        <div class="booking-form__details-container">
-          <h2>Passenger #<%= ticket_no + 1 %></h2>
-          <div class="booking-form__details-content">
-            <input type="text" name="booking[passengers_attributes][<%= ticket_no %>][name]" 
-                   id="booking_passengers_attributes_<%= ticket_no %>_name"
-                   class="booking-form__input<%= " red-box " if @booking.errors.any? {|e| e.attribute.to_s.include?('name')} %>"
-                   value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:name] if @booking_params %>">
-            <label for="booking_passengers_attributes_<%= ticket_no %>_name">Name</label>
-          </div>
-          <div class="booking-form__details-content">
-            <input type="text" name="booking[passengers_attributes][<%= ticket_no %>][email]" 
-                   id="booking_passengers_attributes_<%= ticket_no %>_email"
-                   class="booking-form__input<%= " red-box " if @booking.errors.any? {|e| e.attribute.to_s.include?('email')} %>"
-                   value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:email] if @booking_params %>">
-            <label for="booking_passengers_attributes_<%= ticket_no %>_email">Email</label>
-          </div>
-        </div>
-      <% end %>
-      <input type="hidden" name="booking[num_tickets]" value="<%= @num_tickets %>">
-      <input type="hidden" name="booking[flight_id]" value="<%= @flight.id %>">
       <input type="submit" value="Book Flight!" class="btn">
     </form>
   </div>

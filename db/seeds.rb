@@ -1,4 +1,4 @@
-num_flights_to_seed = 2
+num_flights_to_seed = 250
 airports = %i[JFK MIA LAX SEA DEN ANC]
 
 Airport.create!(code: airports.pop) until airports.empty?

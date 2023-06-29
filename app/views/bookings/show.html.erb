@@ -6,7 +6,7 @@
     <h2>Passenger Information</h2>
     <div class="booking-form__details-content">
       <% @booking.passengers.each_with_index do |passenger, index| %>
-        <h3>Passenger #<%= index + 1 %></h3>
+        <div class="passenger-number">Passenger #<%= index + 1 %></div>
         <div class="booking-form__details-container">
           <p>Name: <strong><%= passenger.name %></strong></p>
           <p>Email: <strong><%= passenger.email %></strong></p>
