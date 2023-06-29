@@ -2,7 +2,6 @@
 	display: grid;
 	grid-auto-columns: 1fr;
 	width: 100%;
-	
 }
 .footer__stripe {
 	background-color: var(--quinary-color);

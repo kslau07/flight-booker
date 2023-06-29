@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FlightsController < ApplicationController
   before_action :futurize_past_flights, only: [:index]
   helper_method :search_params, :sort_column, :sort_direction

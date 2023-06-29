@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 num_flights_to_seed = 250
 airports = %i[JFK MIA LAX SEA DEN ANC]
 

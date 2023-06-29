@@ -29,7 +29,6 @@
 	background-color: var(--quinary-color);
 	font-size: var(--font-size-m);
 	color: var(--font-color-white);
-	
 	box-shadow: var(--box-shadow-l);
 }
 .btn--small:hover,

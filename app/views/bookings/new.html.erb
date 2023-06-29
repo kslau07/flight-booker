@@ -1,6 +1,6 @@
 <main class="main">
   <div class="container container--small">
-    <form action="/bookings" accept-charset="UTF-8" method="post" class="card card--special">
+    <form action="/bookings" accept-charset="UTF-8" method="post" class="card card--narrow">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off">
       <%= render "errors", active_record_object: @booking %>
       <h1>Continue Booking Trip</h1>

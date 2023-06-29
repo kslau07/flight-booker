@@ -5,14 +5,12 @@
 	background-color: var(--card-bg-color);
 	box-shadow: var(--card-box-shadow);
 	outline: 1px solid var(--quaternary-color);
-
 	display: grid;
 	grid-auto-flow: column;
 	gap: var(--gap-xl);
 	font-size: var(--font-size-l);
 	min-width: max-content;
 }
-
 .card--special {
 	grid-auto-flow: row;
 	gap: var(--gap-l);

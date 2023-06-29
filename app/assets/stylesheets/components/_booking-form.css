@@ -6,14 +6,12 @@
   display: grid;
   gap: var(--gap-m);
 }
-
 .booking-form__details-content {
   display: grid;
   gap: var(--gap-s);
   padding-left: var(--padding-m);
   padding-right: var(--padding-m);
 }
-
 .booking-form__error {
   color: var(--error-color);
   background-color: var(--error-bg-color);
