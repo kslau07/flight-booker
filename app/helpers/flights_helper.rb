@@ -9,13 +9,13 @@ module FlightsHelper
                                 arrival_code: search_params[:arrival_code],
                                 num_tickets: search_params[:num_tickets],
                                 start: search_params[:start],
-                                sort_col: sort_col,
-                                direction: direction), { class: css_class }
+                                sort_col:,
+                                direction:), { class: css_class }
   end
 
   def to_hrs_mins(minutes)
     [
-      pluralize(minutes.to_i/60, 'hr'),
+      pluralize(minutes.to_i / 60, 'hr'),
       ', ',
       pluralize(minutes.to_i % 60, 'min')
     ].join.gsub!(/(?<=\d)\s/, '')             # regex lookbehind assert.

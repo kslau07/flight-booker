@@ -20,13 +20,13 @@ end
 
 num_flights_to_seed.times do
   f = Flight.create!(start: Date.today,
-                 flight_duration: nil,
-                 seats_avail: rand_seats_avail,
-                 departure_airport_id: rand_depart_id,
-                 arrival_airport_id: rand_arrival_id)
+                     flight_duration: nil,
+                     seats_avail: rand_seats_avail,
+                     departure_airport_id: rand_depart_id,
+                     arrival_airport_id: rand_arrival_id)
 
   f.assign_attributes(departure_code: Airport.find(f.departure_airport_id).code,
-                          arrival_code: Airport.find(f.arrival_airport_id).code)
+                      arrival_code: Airport.find(f.arrival_airport_id).code)
   f.save!
 end
 

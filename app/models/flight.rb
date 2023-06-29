@@ -14,7 +14,7 @@ class Flight < ApplicationRecord
   def self.search_by_fields(search_params)
     return if search_params.empty?
 
-    search_params.delete_if { |key, val| val == 'ANY' }
+    search_params.delete_if { |_key, val| val == 'ANY' }
 
     query = Flight.all
 

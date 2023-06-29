@@ -17,7 +17,7 @@
             <label for="booking_passengers_attributes_<%= ticket_no %>_name">Name</label>
           </div>
           <div class="booking-form__details-content">
-            <input type="text" name="booking[passengers_attributes][<%= ticket_no %>][email]" 
+            <input type="email" name="booking[passengers_attributes][<%= ticket_no %>][email]" 
                    id="booking_passengers_attributes_<%= ticket_no %>_email"
                    class="booking-form__input<%= " booking-form__field-error " if @booking.errors.any? {|e| e.attribute.to_s.include?('email')} %>"
                    value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:email] if @booking_params %>"
