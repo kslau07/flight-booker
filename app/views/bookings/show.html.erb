@@ -1,6 +1,6 @@
 <main class="main">
   <h2>Your trip has been booked!</h2>
-  <div class="card card--narrow">
+  <div class="card card--special">
     <h1>Here is your flight and ticket information:</h1>
     <div class="booking-form__details-container">
       <h2>Passenger Information</h2>
@@ -18,7 +18,7 @@
       <h2>Flight Details</h2>
       <div class="booking-form__details-content">
         <h3>Number of tickets purchased:</h3>
-        <span>&nbsp;&nbsp;<%= pluralize(@booking.num_tickets, 'ticket')  %></span>
+        <span>&nbsp;&nbsp;<%= pluralize(@booking.passengers.count, 'ticket')  %></span>
         <h3>Departure Date:</h3>
         <span>&nbsp;&nbsp;<%= @booking.flight.start.strftime('%B, %d, %Y') %></span>
         <h3>Departs from:</h3>

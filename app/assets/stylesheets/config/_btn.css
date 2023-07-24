@@ -14,7 +14,6 @@
 	align-self: center;
 }
 .btn:hover,
-.btn:focus,
 .btn:active {
 		color: var(--font-color-white);
 		filter: hue-rotate(-15deg) saturate(1.8);
@@ -24,6 +23,7 @@
 		cursor: pointer;
 		box-shadow: var(--box-shadow-l);
 }
+
 .btn--small {
 	padding: var(--padding-m) var(--padding-xl);
 	background-color: var(--quinary-color);
@@ -32,7 +32,27 @@
 	box-shadow: var(--box-shadow-l);
 }
 .btn--small:hover,
-.btn--small:focus,
 .btn--small:active {
 	filter: hue-rotate(50deg);
+}
+
+.btn--x-small {
+	padding: var(--padding-m) var(--padding-m);
+	background-color: var(--quinary-color);
+	font-size: var(--font-size-m);
+	color: var(--font-color-white);
+	box-shadow: var(--box-shadow-l);
+	width: max-content;
+}
+.btn--x-small:hover,
+.btn--x-small:active {
+	filter: hue-rotate(50deg);
+}
+
+.btn--grey-color {
+	background-color: var(--tertiary-color);
+}
+
+.btn--green-color {
+	background-color: var(--green-color);
 }

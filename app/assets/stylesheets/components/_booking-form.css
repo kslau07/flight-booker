@@ -1,7 +1,7 @@
 .booking-form__details-container {
   outline: 1px solid var(--tertiary-color);
-  padding: var(--padding-m);
-  border-radius: var(--border-radius);
+  padding: var(--padding-l) var(--padding-m);
+  /* border-radius: var(--border-radius); */
   background-color: var(--bg-color-white);
   display: grid;
   gap: var(--gap-m);
@@ -15,7 +15,7 @@
 .booking-form__error {
   color: var(--error-color);
   background-color: var(--error-bg-color);
-  padding: var(--padding-l);
+  padding: var(--padding-l); 
   border-radius: var(--border-radius);
 }
 .booking-form__error-title {
@@ -41,5 +41,11 @@
   background-color: black;
   color: white;
   padding: var(--space-s);
-  border-radius: var(--border-radius);
+  /* border-radius: var(--border-radius); */
+}
+.booking-form__passenger-buttons-container {
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--space-m);
+  justify-self: center;
 }

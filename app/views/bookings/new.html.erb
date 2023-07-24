@@ -1,38 +1,93 @@
+
 <main class="main">
   <div class="container container--small">
-    <form action="/bookings" accept-charset="UTF-8" method="post" class="card card--narrow">
+    <form 
+      action="/bookings" 
+      accept-charset="UTF-8" 
+      method="post" class="card card--special"
+
+      <%# test %>
+      data-controller="add-passenger"
+      data-add-passenger-target="formContainer"
+
+      >
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off">
       <%= render "errors", active_record_object: @booking %>
       <h1>Continue Booking Trip</h1>
       <h3>Please enter passenger information: </h3>
-      <% @num_tickets.to_i.times do |ticket_no| %>
-        <div class="booking-form__details-container">
-          <h2>Passenger #<%= ticket_no + 1 %></h2>
+      <div class="booking-form__details-container">
+        <h2>Passenger #1</h2>
+        <div class="booking-form__details-content">
+          <input type="text" name="booking[passengers_attributes][][name]" 
+                    id=""
+                    class="booking-form__input"
+                    value=""
+                    required >
+          <label for="">Name</label>
+        </div>
+        <div class="booking-form__details-content">
+          <input type="email" name="booking[passengers_attributes][][email]" 
+                    id=""
+                    class="booking-form__input"
+                    value=""
+                    required >
+          <label for="">Email</label>
+        </div>
+      </div>
+      <%# Add a passenger %>
+      <div
+          data-add-passenger-target="childElement"
+          class="booking-form__passenger-buttons-container"
+        >
+        <button
+          type="button"
+          data-action="add-passenger#addOnePassenger"
+          class="btn btn--x-small btn--green-color"
+          >
+          Add a Passenger
+        </button>
+        <button
+          type="button"
+          data-action="add-passenger#removeOnePassenger"
+          class="btn btn--x-small btn--grey-color"
+          >
+          Remove a Passenger
+        </button>
+      </div>
+      <template 
+        data-add-passenger-target="template"
+        >
+        <div 
+          class="booking-form__details-container" 
+          data-add-passenger-target="addedTemplate"
+          >
+          <h2 id="passenger-title">Passenger #1</h2>
           <div class="booking-form__details-content">
-            <input type="text" name="booking[passengers_attributes][<%= ticket_no %>][name]" 
-                   id="booking_passengers_attributes_<%= ticket_no %>_name"
-                   class="booking-form__input<%= " booking-form__field-error " if @booking.errors.any? {|e| e.attribute.to_s.include?('name')} %>"
-                   value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:name] if @booking_params %>"
-                   required >
-            <label for="booking_passengers_attributes_<%= ticket_no %>_name">Name</label>
+            <input type="text" name="booking[passengers_attributes][][name]" 
+                  id=""
+                  class="booking-form__input"
+                  value=""
+                  required >
+            <label for="">Name</label>
           </div>
           <div class="booking-form__details-content">
-            <input type="email" name="booking[passengers_attributes][<%= ticket_no %>][email]" 
-                   id="booking_passengers_attributes_<%= ticket_no %>_email"
-                   class="booking-form__input<%= " booking-form__field-error " if @booking.errors.any? {|e| e.attribute.to_s.include?('email')} %>"
-                   value="<%= @booking_params[:passengers_attributes][ticket_no.to_s][:email] if @booking_params %>"
-                   required >
-            <label for="booking_passengers_attributes_<%= ticket_no %>_email">Email</label>
+            <input type="email" name="booking[passengers_attributes][][email]" 
+                  id=""
+                  class="booking-form__input"
+                  value=""
+                  required >
+            <label for="">Email</label>
           </div>
         </div>
-      <% end %>
+      </template>
+      <%# End of add a passenger %>
       <input type="hidden" name="booking[num_tickets]" value="<%= @num_tickets %>">
       <input type="hidden" name="booking[flight_id]" value="<%= @flight.id %>">
       <div class="booking-form__details-container">
         <h2>Booking Details</h2>
         <div class="booking-form__details-content">
           <h3>Number of tickets requested:</h3>
-          <span>&nbsp;&nbsp;<%= pluralize(@num_tickets, 'ticket')  %></span>
+          <span data-add-passenger-target="numTickets">&nbsp;&nbsp;<%= pluralize(@num_tickets, 'ticket')  %></span>
           <h3>Departure Date:</h3>
           <span>&nbsp;&nbsp;<%= @flight.start.strftime('%B, %d, %Y') %></span>
           <h3>Departs from:</h3>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-num_flights_to_seed = 250
+num_flights_to_seed = 10
 airports = %i[JFK MIA LAX SEA DEN ANC]
 
 Airport.create!(code: airports.pop) until airports.empty?
