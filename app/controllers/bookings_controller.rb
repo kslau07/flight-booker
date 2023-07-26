@@ -14,6 +14,13 @@ class BookingsController < ApplicationController
     @flight = Flight.find(booking_params[:flight_id])
 
     if @booking.save
+
+      # Tell PassengerMailer to send a confirmation email after save
+      # PassengerMailer.with(user: @user).confirmation_email.deliver_now
+      @booking.passengers.each do |pgr|
+        PassengerMailer.with(passenger: pgr).confirmation_email.deliver_later
+      end
+
       redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
