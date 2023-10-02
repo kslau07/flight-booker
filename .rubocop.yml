@@ -10,6 +10,7 @@ Metrics/BlockLength:
 Style/StringLiterals:
   Exclude:
     - Gemfile
+    - db/schema.rb
 
 AllCops:
   NewCops: enable
