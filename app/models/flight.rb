@@ -1,12 +1,42 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: flights
+#
+#  id                   :integer          not null, primary key
+#  arrival_code         :string
+#  departure_code       :string
+#  flight_duration      :string
+#  seats_avail          :integer
+#  start                :datetime
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  arrival_airport_id   :integer          not null
+#  departure_airport_id :integer          not null
+#
+# Indexes
+#
+#  index_flights_on_arrival_airport_id    (arrival_airport_id)
+#  index_flights_on_departure_airport_id  (departure_airport_id)
+#
+# Foreign Keys
+#
+#  arrival_airport_id    (arrival_airport_id => airports.id)
+#  departure_airport_id  (departure_airport_id => airports.id)
+#
 class Flight < ApplicationRecord
   after_create :randomize_flight_duration
   belongs_to :departure_airport, class_name: 'Airport'
   belongs_to :arrival_airport, class_name: 'Airport'
-
   has_many :bookings
   has_many :passengers, through: :bookings
+
+  validates :start, presence: true
+  validates :flight_duration, presence: true
+  validates :arrival_code, presence: true
+  validates :departure_code, presence: true
+
 
   scope :departing_from, ->(airport_id) { where('departure_airport_id = ?', airport_id) }
   scope :arriving_at, ->(airport_id) { where('arrival_airport_id = ?', airport_id) }

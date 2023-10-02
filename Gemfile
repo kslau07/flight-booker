@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
-# ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails'
@@ -54,9 +53,25 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# My Gems
+gem 'rubocop'
+gem 'rubocop-rails'
+gem 'better_errors'
+gem 'bullet'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'annotate'
+  gem 'capybara'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  # gem 'devise'
+  # gem 'responders'
+  gem 'factory_bot_rails'
+  # gem 'faker'
+  gem 'rspec-rails'
+  # gem 'selenium-webdriver'         # NOTE: delete me if unused
+  # gem 'warden'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -78,5 +93,4 @@ gem 'pg'
 gem 'redis'
 # gem 'redis', '~> 5.0'
 
-gem "letter_opener", group: :development
-
+gem 'letter_opener', group: :development

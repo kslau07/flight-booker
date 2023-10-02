@@ -33,3 +33,9 @@ Things I added that were not in the project spec:
 * "ANY" selection in the dropdown menu that essentially omits that category in the query
 
 I feel much more comfortable with forms and nested attributes after this project. Writing forms manually with bare html is tedious work and I can appreciate how Rails makes things so much simpler with form helpers. This was also good practice for working with association members and how we can create association members going through parent objects.
+
+## Need to implement:
+
+* Add departure time (in addition to just date) to Flight model
+* Flesh out confirmation mailer more
+* Add unique constraint to email

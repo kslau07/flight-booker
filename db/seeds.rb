@@ -32,5 +32,6 @@ num_flights_to_seed.times do
   f.save!
 end
 
-puts "Airport was seeded with #{Airport.count} records"
-puts "Flight was seeded with #{Flight.count} records"
+puts "Database was seeded. It has:"
+puts "#{Airport.count} Airport #{'record'.pluralize(Airport.count)},"
+puts "#{Flight.count} Flight #{'record'.pluralize(Flight.count)}"
