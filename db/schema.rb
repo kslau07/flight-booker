@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_02_185727) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_02_211455) do
   create_table "airports", force: :cascade do |t|
     t.string "code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location", null: false
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "num_tickets"
+    t.integer "num_tickets", null: false
     t.integer "flight_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,10 +27,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_185727) do
   end
 
   create_table "flights", force: :cascade do |t|
-    t.datetime "start"
-    t.string "flight_duration"
-    t.string "departure_code"
-    t.string "arrival_code"
+    t.datetime "start", null: false
+    t.string "flight_duration", null: false
+    t.string "departure_code", null: false
+    t.string "arrival_code", null: false
     t.integer "departure_airport_id", null: false
     t.integer "arrival_airport_id", null: false
     t.datetime "created_at", null: false
@@ -40,8 +41,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_185727) do
   end
 
   create_table "passengers", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.integer "booking_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

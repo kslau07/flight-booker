@@ -5,8 +5,8 @@
 # Table name: passengers
 #
 #  id         :integer          not null, primary key
-#  email      :string
-#  name       :string
+#  email      :string           not null
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  booking_id :integer          not null

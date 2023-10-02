@@ -5,11 +5,11 @@
 # Table name: flights
 #
 #  id                   :integer          not null, primary key
-#  arrival_code         :string
-#  departure_code       :string
-#  flight_duration      :string
+#  arrival_code         :string           not null
+#  departure_code       :string           not null
+#  flight_duration      :string           not null
 #  seats_avail          :integer
-#  start                :datetime
+#  start                :datetime         not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  arrival_airport_id   :integer          not null
@@ -36,7 +36,6 @@ class Flight < ApplicationRecord
   validates :flight_duration, presence: true
   validates :arrival_code, presence: true
   validates :departure_code, presence: true
-
 
   scope :departing_from, ->(airport_id) { where('departure_airport_id = ?', airport_id) }
   scope :arriving_at, ->(airport_id) { where('arrival_airport_id = ?', airport_id) }

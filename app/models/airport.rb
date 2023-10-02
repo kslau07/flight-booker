@@ -6,6 +6,7 @@
 #
 #  id         :integer          not null, primary key
 #  code       :string           not null
+#  location   :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

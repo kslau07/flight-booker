@@ -5,7 +5,7 @@
 # Table name: bookings
 #
 #  id          :integer          not null, primary key
-#  num_tickets :integer
+#  num_tickets :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  flight_id   :integer          not null
