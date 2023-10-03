@@ -1,17 +1,21 @@
 # frozen_string_literal: true
 
 class BookingsController < ApplicationController
+  def show
+    @booking = Booking.includes(flight: %i[arrival_airport departure_airport]).find(params[:id])
+  end
+
   def new
     @booking = Booking.new
     @num_tickets = num_tickets
-    @flight = Flight.find(url_params[:flight_id])
+    @flight = Flight.includes(:arrival_airport, :departure_airport).find(url_params[:flight_id])
   end
 
   def create
     @booking_params = booking_params
     @booking = Booking.new(booking_params)
     @num_tickets = booking_params[:num_tickets]
-    @flight = Flight.find(booking_params[:flight_id])
+    @flight = Flight.includes(:arrival_airport, :departure_airport).find(booking_params[:flight_id])
 
     if @booking.save
 
@@ -25,10 +29,6 @@ class BookingsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @booking = Booking.find(params[:id])
   end
 
   private

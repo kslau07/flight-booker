@@ -19,14 +19,17 @@
       <div class="booking-form__details-content">
         <h3>Number of tickets purchased:</h3>
         <span>&nbsp;&nbsp;<%= pluralize(@booking.passengers.count, 'ticket')  %></span>
-        <h3>Departure Date:</h3>
-        <span>&nbsp;&nbsp;<%= @booking.flight.start.strftime('%B, %d, %Y') %></span>
-        <h3>Departs from:</h3>
-        <span>&nbsp;&nbsp;<%= @booking.flight.departure_code %></span>
-        <h3>Arrives at:</h3>
-        <span>&nbsp;&nbsp;<%= @booking.flight.arrival_code %></span>
-        <h3>Flight Duration:</h3>
-        <span>&nbsp;&nbsp;<%= to_hrs_mins(@booking.flight.flight_duration) %></span>
+          <h3>Departure Time & Date:</h3>
+          <span>&nbsp;&nbsp;<%= "#{@booking.flight.start_date.strftime('%B, %d, %Y')}" %></span>
+          <span class='booking-start_time'>&nbsp;&nbsp;<%= "@ #{@booking.flight.start_time.strftime('%I:%M%p')}" %></span>
+          <h3>Flight Number:</h3>
+          <span>&nbsp;&nbsp;<%= @booking.flight.flight_number %></span>
+          <h3>Departs from:</h3>
+          <span>&nbsp;&nbsp;<%= "#{@booking.flight.departure_airport.location} (#{@booking.flight.departure_code})" %></span>
+          <h3>Arrives at:</h3>
+          <span>&nbsp;&nbsp;<%= "#{@booking.flight.arrival_airport.location} (#{@booking.flight.arrival_code})" %></span>
+          <h3>Flight Duration:</h3>
+          <span>&nbsp;&nbsp;<%= convert_total_mins_to_hours_and_mins(@booking.flight.flight_duration) %></span>
       </div>
     </div>
   </div>

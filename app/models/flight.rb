@@ -8,6 +8,7 @@
 #  arrival_code         :string           not null
 #  departure_code       :string           not null
 #  flight_duration      :string           not null
+#  flight_number        :string
 #  seats_avail          :integer
 #  start_date           :datetime         not null
 #  start_time           :time             not null
@@ -27,7 +28,7 @@
 #  departure_airport_id  (departure_airport_id => airports.id)
 #
 class Flight < ApplicationRecord
-  after_create :randomize_flight_duration
+  # after_create :randomize_flight_duration          # NOTE: delete me
   belongs_to :departure_airport, class_name: 'Airport'
   belongs_to :arrival_airport, class_name: 'Airport'
   has_many :bookings
@@ -77,7 +78,7 @@ class Flight < ApplicationRecord
   private
 
   # For seeding
-  def randomize_flight_duration
-    update(flight_duration: rand(180..480)) # in minutes
-  end
+  # def randomize_flight_duration          # NOTE: delete me
+  #   update(flight_duration: rand(180..480)) # in minutes
+  # end
 end

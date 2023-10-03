@@ -88,14 +88,17 @@
         <div class="booking-form__details-content">
           <h3>Number of tickets requested:</h3>
           <span data-add-passenger-target="numTickets">&nbsp;&nbsp;<%= pluralize(@num_tickets, 'ticket')  %></span>
-          <h3>Departure Date:</h3>
-          <span>&nbsp;&nbsp;<%= @flight.start.strftime('%B, %d, %Y') %></span>
+          <h3>Departure Time & Date:</h3>
+          <span>&nbsp;&nbsp;<%= "#{@flight.start_date.strftime('%B, %d, %Y')}" %></span>
+          <span class='booking-start_time'>&nbsp;&nbsp;<%= "@ #{@flight.start_time.strftime('%I:%M%p')}" %></span>
+          <h3>Flight Number:</h3>
+          <span>&nbsp;&nbsp;<%= @flight.flight_number %></span>
           <h3>Departs from:</h3>
-          <span>&nbsp;&nbsp;<%= @flight.departure_code %></span>
+          <span>&nbsp;&nbsp;<%= "#{@flight.departure_airport.location} (#{@flight.departure_code})" %></span>
           <h3>Arrives at:</h3>
-          <span>&nbsp;&nbsp;<%= @flight.arrival_code %></span>
+          <span>&nbsp;&nbsp;<%= "#{@flight.arrival_airport.location} (#{@flight.arrival_code})" %></span>
           <h3>Flight Duration:</h3>
-          <span>&nbsp;&nbsp;<%= to_hrs_mins(@flight.flight_duration) %></span>
+          <span>&nbsp;&nbsp;<%= convert_total_mins_to_hours_and_mins(@flight.flight_duration) %></span>
         </div>
       </div>
       <input type="submit" value="Book Flight!" class="btn">

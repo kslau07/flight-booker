@@ -1,43 +1,45 @@
 .table {
   border-collapse: separate;
   border-spacing: 0 var(--space-s);
-	width: 100%;
+  width: 100%;
 }
 .table__row {
-	height: 45px;
-	background-color: var(--bg-color-white);
-	text-align: center;
+  height: 45px;
+  background-color: var(--bg-color-white);
+  text-align: center;
 }
 .table__header {
-	height: 60px;
-	letter-spacing: 0.05rem;
-	background-color: var(--bg-color-light-gray);
-	box-shadow: none;
+  height: 60px;
+  letter-spacing: 0.05rem;
+  background-color: var(--bg-color-light-gray);
+  box-shadow: none;
 
-	position: sticky;
-	top: var(--space-s);
-	z-index: 0;
+  position: sticky;
+  top: var(--space-s);
+  z-index: 0;
 }
 .table__left-cell {
-	border-top-left-radius: var(--card-border-radius);
-	border-bottom-left-radius: var(--card-border-radius);
+	padding-left: var(--space-l);
+  text-align: left;
+  border-top-left-radius: var(--card-border-radius);
+  border-bottom-left-radius: var(--card-border-radius);
 }
 .table__right-cell {
-	border-top-right-radius: var(--card-border-radius);
-	border-bottom-right-radius: var(--card-border-radius);
-	padding-right: var(--padding-m);
+  border-top-right-radius: var(--card-border-radius);
+  border-bottom-right-radius: var(--card-border-radius);
+  padding-right: var(--padding-m);
 }
 .matched {
-	padding-top: var(--space-xl);
-	padding-bottom: var(--space-m);
-	text-align: right;
-	letter-spacing: 0.025rem;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-m);
+  text-align: right;
+  letter-spacing: 0.025rem;
 }
 .no_matches {
-	padding-top: var(--space-l);
-	text-align: center;
-	color: var(--quinary-color);
-	letter-spacing: 0.025rem;
+  padding-top: var(--space-l);
+  text-align: center;
+  color: var(--quinary-color);
+  letter-spacing: 0.025rem;
 }
 
 /* Sorting */
@@ -47,13 +49,12 @@
   background-position: right center;
 }
 .asc {
-	background: no-repeat right;
-	background-image: url("asc.svg");
-	background-size: 24px;
+  background: no-repeat right;
+  background-image: url("asc.svg");
+  background-size: 24px;
 }
 .desc {
-	background: no-repeat right;
-	background-image: url("desc.svg");
-	background-size: 24px;
+  background: no-repeat right;
+  background-image: url("desc.svg");
+  background-size: 24px;
 }
-

@@ -49,3 +49,6 @@
   gap: var(--space-m);
   justify-self: center;
 }
+.booking-start_time {
+  font-weight: bold;
+}

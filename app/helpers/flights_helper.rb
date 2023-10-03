@@ -15,11 +15,10 @@ module FlightsHelper
                                 direction:), { class: css_class }
   end
 
-  def to_hrs_mins(minutes)
+  def convert_total_mins_to_hours_and_mins(minutes)
     [
-      pluralize(minutes.to_i / 60, 'hr'),
-      ', ',
+      (pluralize(minutes.to_i / 60, 'hr') + ', ' if (minutes.to_i / 60).positive?), # show hours if exist
       pluralize(minutes.to_i % 60, 'min')
-    ].join.gsub!(/(?<=\d)\s/, '')             # regex lookbehind assert.
+    ].join.gsub!(/(?<=\d)\s/, '') # regex lookbehind assert.
   end
 end

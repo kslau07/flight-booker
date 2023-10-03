@@ -12,8 +12,9 @@ RSpec.feature 'Create a new booking', type: :system do
   scenario 'A user creates a booking starting at the root path' do
     visit '/'
     # select "departure_code", :from => "departure_code"
-    sleep 60
+    # sleep 60
 
     # select "option_name_here", :from => "organizationSelect"
   end
 end
+

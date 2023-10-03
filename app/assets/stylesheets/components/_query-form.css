@@ -1,28 +1,31 @@
 .form {
 }
 .query-form__item {
-	display: grid;
-	gap: var(--gap-m);
-	text-align: center;
+  display: grid;
+  gap: var(--gap-m);
+  text-align: center;
 }
 .query-form__select {
-	font-size: var(--font-size-l);
-	font-family: var(--font-family-sans);
-	text-align: center;
-	padding: var(--padding-s);
-	border: 1px solid var(--quinary-color);
-	outline: 1px solid var(--quinary-color);
-	border-radius: 3px;
+  font-size: var(--font-size-l);
+  font-family: var(--font-family-sans);
+  text-align: center;
+  padding: var(--padding-s);
+  border: 1px solid var(--quinary-color);
+  outline: 1px solid var(--quinary-color);
+  border-radius: 3px;
 }
 .query-form__radio-button {
-	width: 22px;
-	height: 22px;
-	accent-color: var(--quinary-color);
+  width: 22px;
+  height: 22px;
+  accent-color: var(--quinary-color);
 }
 .table-form {
-	width: 100%;
-	text-align: right;
-	display: grid;
-	justify-items: right;
-	gap: var(--gap-m);
+  width: 100%;
+  text-align: right;
+  display: grid;
+  justify-items: right;
+  gap: var(--gap-m);
+}
+.table-flight-start_time {
+  font-weight: bold;
 }
