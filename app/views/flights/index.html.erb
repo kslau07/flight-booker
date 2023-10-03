@@ -42,11 +42,11 @@
       </div>
       <div class="query-form__item">
         <span>Depart Date</span>
-        <select name="start" id="" class="query-form__select">
+        <select name="start_date" id="" class="query-form__select">
           <option>ANY</option>
           <% @flight_dates.each do |flight_date| %>
             <option value="<%= flight_date %>"
-              <%= "selected" if @search_params[:start]  == flight_date.to_s %>
+              <%= "selected" if @search_params[:start_date]  == flight_date.to_s %>
               >
               <%= flight_date.strftime('%B, %d, %Y') %></option>
           <% end %>
@@ -71,7 +71,7 @@
               <th class="table__left-cell"><%= sortable "id", "Flight No." %></th>
               <th><%= sortable "departure_code", "Departs From" %></th>
               <th><%= sortable "arrival_code", "Arrives At" %></th>
-              <th><%= sortable "start", "Flight Date" %></th>
+              <th><%= sortable "start_date", "Flight Date" %></th>
               <th><%= sortable "flight_duration", "Flight Dur." %></th>
               <th><%= sortable "seats_avail", "Seats Avail." %></th>
               <th class="table__right-cell">Select</th>

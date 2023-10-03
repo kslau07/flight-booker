@@ -9,7 +9,7 @@
     <%= flight.arrival_airport.code %>
   </td>
   <td>
-    <%= flight.start.strftime("%F") %>
+    <%= flight.start_date.strftime("%F") %>
   </td>
   <td>
     <%= to_hrs_mins(flight.flight_duration) %>

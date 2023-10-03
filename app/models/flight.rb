@@ -9,7 +9,8 @@
 #  departure_code       :string           not null
 #  flight_duration      :string           not null
 #  seats_avail          :integer
-#  start                :datetime         not null
+#  start_date           :datetime         not null
+#  start_time           :time             not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  arrival_airport_id   :integer          not null
@@ -32,7 +33,8 @@ class Flight < ApplicationRecord
   has_many :bookings
   has_many :passengers, through: :bookings
 
-  validates :start, presence: true
+  validates :start_date, presence: true
+  validates :start_time, presence: true
   validates :flight_duration, presence: true
   validates :arrival_code, presence: true
   validates :departure_code, presence: true

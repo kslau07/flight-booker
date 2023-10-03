@@ -10,7 +10,7 @@ module FlightsHelper
     link_to title, flights_path(departure_code: search_params[:departure_code],
                                 arrival_code: search_params[:arrival_code],
                                 num_tickets: search_params[:num_tickets],
-                                start: search_params[:start],
+                                start_date: search_params[:start_date],
                                 sort_col:,
                                 direction:), { class: css_class }
   end

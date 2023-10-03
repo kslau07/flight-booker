@@ -6,7 +6,7 @@ class FlightsController < ApplicationController
 
   def index
     @airport_codes = Airport.order(code: :asc).pluck(:code)
-    @flight_dates = Flight.order(start: :asc).pluck('distinct start')
+    @flight_dates = Flight.order(start_date: :asc).pluck('distinct start_date')
     @search_params = search_params
 
     @query_results = Flight.search_by_fields(search_params)
@@ -24,13 +24,13 @@ class FlightsController < ApplicationController
   end
 
   def search_params
-    params.permit(:departure_code, :arrival_code, :num_tickets, :start, :sort_col, :direction)
+    params.permit(:departure_code, :arrival_code, :num_tickets, :start_date, :sort_col, :direction)
   end
 
   def futurize_past_flights
-    past_flights = Flight.where('start <= :tomorrow', tomorrow: Date.tomorrow)
+    past_flights = Flight.where('start_date <= :tomorrow', tomorrow: Date.tomorrow)
     past_flights.each do |flight|
-      flight.update(start: Date.tomorrow + rand(1..45).days)
+      flight.update(start_date: Date.tomorrow + rand(1..45).days)
     end
   end
 end
