@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Helper functions for flight
 module FlightsHelper
   def sortable(column, title = nil)
     title ||= column.titleize

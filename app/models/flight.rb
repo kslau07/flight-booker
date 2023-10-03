@@ -40,10 +40,10 @@ class Flight < ApplicationRecord
   validates :arrival_code, presence: true
   validates :departure_code, presence: true
 
-  scope :departing_from, ->(airport_id) { where('departure_airport_id = ?', airport_id) }
-  scope :arriving_at, ->(airport_id) { where('arrival_airport_id = ?', airport_id) }
+  scope :departing_from, ->(airport_id) { where(departure_airport_id: airport_id) }
+  scope :arriving_at, ->(airport_id) { where(arrival_airport_id: airport_id) }
   scope :seats_avail, ->(num_tickets) { where('seats_avail >= ?', num_tickets) }
-  scope :starting_date, ->(date) { where('start = ?', date) }
+  scope :starting_date, ->(date) { where(start: date) }
 
   def self.search_by_fields(search_params)
     return if search_params.empty?
@@ -74,8 +74,6 @@ class Flight < ApplicationRecord
 
     query
   end
-
-  private
 
   # For seeding
   # def randomize_flight_duration          # NOTE: delete me

@@ -6,6 +6,8 @@ require_relative 'seed_lib/flight_info'
 total_flight_seeds = 100
 seed_airports = AirportInfo.airports
 
+# TODO: Redo mailer, look at more indepth options
+
 ActiveRecord::Base.transaction do
   # Create airports
   seed_airports.each do |code, data|
