@@ -25,29 +25,15 @@
 #  arrival_airport_id    (arrival_airport_id => airports.id)
 #  departure_airport_id  (departure_airport_id => airports.id)
 #
-require_relative '../../db/seed_lib/airport_info'
-
-# airports = FlightBooker::AirportInfo.airports          # NOTE: delete me if not needed
 
 FactoryBot.define do
   factory :flight do
-    start_date { Time.zone.today }
-    start_time { Time.zone.now }
-    flight_duration { 1 }
-    # dep_airport = airports.first
-    # arr_airport = airports.last
-    # departure_airport { dep_airport }
-    # arrival_airport { arr_airport }
-    # start_date { Time.zone.today }
-    # start_time { Time.zone.now }
-    # flight_duration { '42' }
-    # departure_code { dep_airport.code }
-    # arrival_code { arr_airport.code }
-    # Arrival airport must exist
-    # Start date can't be blank
-    # Start time can't be blank
-    # Flight duration can't be blank
-    # Arrival code can't be blank
-    # Departure code can't be blank
+    departure_airport { build(:airport) }
+    arrival_airport { build(:airport) }
+    start_date { Time.zone.today + rand(7..60) }
+    start_time { Time.zone.now + rand(60..1440).minutes }
+    flight_duration { rand(30..400) }
+    seats_avail { rand(1..33) }
+    flight_number { Faker::Base.numerify 'ROR ####' }
   end
 end

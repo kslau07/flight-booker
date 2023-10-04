@@ -67,7 +67,7 @@ group :development, :test do
   # gem 'devise'
   # gem 'responders'
   gem 'factory_bot_rails'
-  # gem 'faker'
+  gem 'faker'
   gem 'rspec-rails'
   # gem 'selenium-webdriver'         # NOTE: delete me if unused
   # gem 'warden'

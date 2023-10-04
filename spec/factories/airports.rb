@@ -12,38 +12,14 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require_relative '../../db/seed_lib/airport_info'
-
-airports = FlightBooker::AirportInfo.airports
 
 FactoryBot.define do
+  sequence(:code, 'AAA')
+
   factory :airport do
-    trait :atlanta do
-      code { 'ATL' }
-      location { airports[:ATL][:location] }
-      latitude { airports[:ATL][:coordinates][:latitude] }
-      longitude { airports[:ATL][:coordinates][:longitude] }
-    end
-
-    trait :chicago do
-      code { 'ORD' }
-      location { airports[:ORD][:location] }
-      latitude { airports[:ORD][:coordinates][:latitude] }
-      longitude { airports[:ORD][:coordinates][:longitude] }
-    end
-
-    trait :new_york do
-      code { 'JFK' }
-      location { airports[:JFK][:location] }
-      latitude { airports[:JFK][:coordinates][:latitude] }
-      longitude { airports[:JFK][:coordinates][:longitude] }
-    end
-
-    trait :los_angeles do
-      code { 'LAX' }
-      location { airports[:LAX][:location] }
-      latitude { airports[:LAX][:coordinates][:latitude] }
-      longitude { airports[:LAX][:coordinates][:longitude] }
-    end
+    code { generate(:code) }
+    location { "#{Faker::Address.city}, #{Faker::Address.state_abbr}" }
+    latitude { 123.123 }
+    longitude { -123.123 }
   end
 end

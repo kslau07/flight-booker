@@ -8,7 +8,8 @@ total_flight_seeds = 100
 seed_airports = FlightBooker::AirportInfo.airports
 
 # TODO: Redo mailer, look at more indepth options
-#
+# TODO: create(:airport) should be more abstract
+# TODO: Use a create(:airport) in Flights factory
 
 ActiveRecord::Base.transaction do
   # Create airports
