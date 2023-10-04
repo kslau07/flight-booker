@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module FlightBooker
+  # A colleciton of airport information that is helpful for this project
   class AirportInfo
-    # A hash of the top 20 largest airports in the U.S. with info relevant to this project
     def self.airports
       {
         ATL: { location: 'Atlanta, GA',

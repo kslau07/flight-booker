@@ -25,9 +25,9 @@
           <h3>Flight Number:</h3>
           <span>&nbsp;&nbsp;<%= @booking.flight.flight_number %></span>
           <h3>Departs from:</h3>
-          <span>&nbsp;&nbsp;<%= "#{@booking.flight.departure_airport.location} (#{@booking.flight.departure_code})" %></span>
+          <span>&nbsp;&nbsp;<%= "#{@booking.flight.departure_airport.location} (#{@booking.flight.departure_airport.code})" %></span>
           <h3>Arrives at:</h3>
-          <span>&nbsp;&nbsp;<%= "#{@booking.flight.arrival_airport.location} (#{@booking.flight.arrival_code})" %></span>
+          <span>&nbsp;&nbsp;<%= "#{@booking.flight.arrival_airport.location} (#{@booking.flight.arrival_airport.code})" %></span>
           <h3>Flight Duration:</h3>
           <span>&nbsp;&nbsp;<%= convert_total_mins_to_hours_and_mins(@booking.flight.flight_duration) %></span>
       </div>

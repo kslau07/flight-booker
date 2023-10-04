@@ -3,15 +3,14 @@
 require 'rails_helper'
 
 RSpec.feature 'Create a new booking', type: :system do
-  before do
-    create(:airport, :atlanta)
-    create(:airport, :chicago)
-    create(:airport, :new_york)
-    create(:airport, :los_angeles)
-    # Create flights
-  end
-
   scenario 'A user creates a booking starting at the root path' do
+    atlanta = create(:airport, :atlanta)
+    chicago = create(:airport, :chicago)
+    new_york = create(:airport, :new_york)
+    los_angeles = create(:airport, :los_angeles)
+    create(:flight, departure_airport: atlanta, arrival_airport: chicago)
+    create(:flight, departure_airport: new_york, arrival_airport: los_angeles)
+
     visit '/'
     sleep 15
 

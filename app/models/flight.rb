@@ -5,8 +5,6 @@
 # Table name: flights
 #
 #  id                   :integer          not null, primary key
-#  arrival_code         :string           not null
-#  departure_code       :string           not null
 #  flight_duration      :string           not null
 #  flight_number        :string
 #  seats_avail          :integer
@@ -28,7 +26,6 @@
 #  departure_airport_id  (departure_airport_id => airports.id)
 #
 class Flight < ApplicationRecord
-  # after_create :randomize_flight_duration          # NOTE: delete me
   belongs_to :departure_airport, class_name: 'Airport'
   belongs_to :arrival_airport, class_name: 'Airport'
   has_many :bookings
@@ -37,8 +34,6 @@ class Flight < ApplicationRecord
   validates :start_date, presence: true
   validates :start_time, presence: true
   validates :flight_duration, presence: true
-  validates :arrival_code, presence: true
-  validates :departure_code, presence: true
 
   scope :departing_from, ->(airport_id) { where(departure_airport_id: airport_id) }
   scope :arriving_at, ->(airport_id) { where(arrival_airport_id: airport_id) }
@@ -74,9 +69,4 @@ class Flight < ApplicationRecord
 
     query
   end
-
-  # For seeding
-  # def randomize_flight_duration          # NOTE: delete me
-  #   update(flight_duration: rand(180..480)) # in minutes
-  # end
 end
