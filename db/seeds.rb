@@ -7,11 +7,6 @@ require_relative 'seed_lib/rand_generators'
 total_flight_seeds = 100
 seed_airports = FlightBooker::AirportInfo.airports
 
-# TODO: Redo mailer, look at more indepth options
-# TODO: Add expect for returned flight options in booking system test
-# TODO: Write model tests for one model
-# TODO: Learn about services
-
 ActiveRecord::Base.transaction do
   # Create airports
   seed_airports.each do |code, data|
@@ -29,7 +24,9 @@ ActiveRecord::Base.transaction do
     airports.each do |departure_airport|
       next if n_flights == total_flight_seeds
 
-      arrival_airport, flight_duration = FlightBooker::RandGenerators.arrival_airport_and_flight_duration(departure_airport, airports)
+      arrival_airport, flight_duration = FlightBooker::RandGenerators.arrival_airport_and_flight_duration(
+        departure_airport, airports
+      )
       rand_date = rand(3..60).days.from_now
       rand_time = rand(0..1440).minutes.from_now
       rand_fl_no = FlightBooker::RandGenerators.flight_number

@@ -29,15 +29,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_014645) do
   end
 
   create_table "flights", force: :cascade do |t|
+    t.string "flight_number", null: false
     t.datetime "start_date", null: false
     t.string "flight_duration", null: false
     t.integer "departure_airport_id", null: false
     t.integer "arrival_airport_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "seats_avail"
+    t.integer "seats_avail", default: 200, null: false
     t.time "start_time", null: false
-    t.string "flight_number"
     t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
     t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
   end

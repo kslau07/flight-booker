@@ -8,7 +8,7 @@ RSpec.feature 'Create a new booking', type: :system do
       create_list(:flight, 3, seats_avail: 4)
     end
 
-    scenario 'When 4 tickets are booked successfully, user sees a confirmation at the end' do
+    scenario 'When 4 tickets are booked successfully, a booking confirmation is displayed.' do
       visit '/'
       first('#departure_code', minimum: 1).select_option
       find('#departure_code').send_keys(:down)

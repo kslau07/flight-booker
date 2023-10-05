@@ -25,15 +25,25 @@
 #  arrival_airport_id    (arrival_airport_id => airports.id)
 #  departure_airport_id  (departure_airport_id => airports.id)
 #
+require 'rails_helper'
 
-FactoryBot.define do
-  factory :flight do
-    departure_airport { build(:airport) }
-    arrival_airport { build(:airport) }
-    start_date { Time.zone.today + 60.days }
-    start_time { Time.zone.now + rand(60..1440).minutes }
-    flight_duration { rand(30..400) }
-    seats_avail { rand(1..33) }
-    flight_number { Faker::Base.numerify 'ROR ####' }
+RSpec.describe Flight, type: :model do
+  let!(:arr_airport) { build(:airport) }
+  let!(:dep_airport) { build(:airport) }
+  let!(:flight) do
+    described_class.create(flight_duration: '',
+                           flight_number: '',
+                           seats_avail: '',
+                           start_date: '',
+                           start_time: '',
+                           arrival_airport_id: arr_airport,
+                           departure_airport_id: dep_airport)
+  end
+
+  describe '#flight_duration' do
+    subject(:flight_duration) { flight.flight_duration }
+    it '' do
+      expect(flight_duration).to eq 1
+    end
   end
 end

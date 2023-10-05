@@ -6,8 +6,8 @@
 #
 #  id                   :integer          not null, primary key
 #  flight_duration      :string           not null
-#  flight_number        :string
-#  seats_avail          :integer
+#  flight_number        :string           not null
+#  seats_avail          :integer          default(200), not null
 #  start_date           :datetime         not null
 #  start_time           :time             not null
 #  created_at           :datetime         not null
