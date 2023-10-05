@@ -15,6 +15,8 @@ RSpec.feature 'Create a new booking', type: :system do
       find('#arrival_code').send_keys(:down, :down)
       select('4', from: 'num_tickets')
       click_button 'Search Flights'
+
+      expect(page).to have_css('table[id="flight-search-results"]')
       expect(page).to have_css('input[type="radio"]')
       first('input[type="radio"]').click
       click_button 'Continue'

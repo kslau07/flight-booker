@@ -64,13 +64,9 @@ group :development, :test do
   gem 'annotate'
   gem 'capybara'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  # gem 'devise'
-  # gem 'responders'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
-  # gem 'selenium-webdriver'         # NOTE: delete me if unused
-  # gem 'warden'
   gem 'webdrivers'
 end
 

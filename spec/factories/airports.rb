@@ -19,7 +19,7 @@ FactoryBot.define do
   factory :airport do
     code { generate(:code) }
     location { "#{Faker::Address.city}, #{Faker::Address.state_abbr}" }
-    latitude { 123.123 }
-    longitude { -123.123 }
+    latitude { 111.111 }
+    longitude { -111.111 }
   end
 end
