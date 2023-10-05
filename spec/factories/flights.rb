@@ -30,7 +30,7 @@ FactoryBot.define do
   factory :flight do
     departure_airport { build(:airport) }
     arrival_airport { build(:airport) }
-    start_date { Time.zone.today + rand(7..60) }
+    start_date { Time.zone.today + 60.days }
     start_time { Time.zone.now + rand(60..1440).minutes }
     flight_duration { rand(30..400) }
     seats_avail { rand(1..33) }

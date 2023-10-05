@@ -4,7 +4,7 @@
     <form action="/flights" accept-charset="UTF-8" method="get" class="card">
       <div class="query-form__item">
         <span>Depart: </span>
-        <select name="departure_code" id="" class="query-form__select">
+        <select name="departure_code" id="departure_code" class="query-form__select">
           <option>ANY</option>
           <% @airport_codes.each do |airport_code| %>
             <option value="<%= airport_code %>" 
@@ -17,7 +17,7 @@
       </div>
       <div class="query-form__item">
         <span>Arrive: </span>
-        <select name="arrival_code" id="" class="query-form__select">
+        <select name="arrival_code" id="arrival_code" class="query-form__select">
           <option>ANY</option>
           <% @airport_codes.each do |airport_code| %>
             <option value="<%= airport_code %>"
@@ -30,7 +30,7 @@
       </div>
       <div class="query-form__item">
         <span># Travelers</span>
-        <select name="num_tickets" id="" class="query-form__select">
+        <select name="num_tickets" id="num_tickets" class="query-form__select">
           <% 4.times do |index| %>
             <option value="<%= index+1 %>"
               <%= "selected" if @search_params[:num_tickets]  == (index+1).to_s %>
