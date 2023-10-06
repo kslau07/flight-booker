@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Helper functions for flight
 module FlightsHelper
   def sortable(column, title = nil)
     title ||= column.titleize
@@ -16,7 +15,7 @@ module FlightsHelper
                                 direction:), { class: css_class }
   end
 
-  def convert_total_mins_to_hours_and_mins(minutes)
+  def convert_minutes_to_hrs_mins(minutes)
     [
       (pluralize(minutes.to_i / 60, 'hr') + ', ' if (minutes.to_i / 60).positive?), # show hours if exist
       pluralize(minutes.to_i % 60, 'min')

@@ -55,4 +55,18 @@ RSpec.describe Airport, type: :model do
       it { is_expected.to be false }
     end
   end
+
+  describe 'Validations' do
+    it { should validate_presence_of(:code) }
+  # it { should validate_presence_of(:title) }
+    # it { is_expected.to validate_inclusion_of(:code) }
+    # it { is_expected.to validate_inclusion_of(:gender).in_array(%i[gender_neutral non_binary male female other]) }
+  end
+
+  # before { FactoryBot.build(:user) }
+  # it do
+  #   should validate_uniqueness_of(:username)
+  #     .scoped_to(:account_id)
+  #     .case_insensitive
+  # end
 end

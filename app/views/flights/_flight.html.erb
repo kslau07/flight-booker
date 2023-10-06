@@ -15,7 +15,7 @@
     <span class='table-flight-start_time'><%= flight.start_time.strftime("@ %I:%M%p") %></span>
   </td>
   <td>
-    <%= convert_total_mins_to_hours_and_mins(flight.flight_duration) %>
+    <%= convert_minutes_to_hrs_mins(flight.flight_duration) %>
   </td>
   <td>
     <%= flight.seats_avail %>
