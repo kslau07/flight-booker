@@ -5,7 +5,9 @@ require 'rails_helper'
 RSpec.feature 'Create a new booking', type: :system do
   context 'When a user enters valid inputs for forms' do
     before do
-      create_list(:flight, 3, seats_avail: 4)
+      create_list(:flight, 3,
+                  seats_avail: 4,
+                  flight_duration: 120)
     end
 
     scenario 'When 4 tickets are booked successfully, a booking confirmation is displayed.' do
@@ -44,6 +46,8 @@ RSpec.feature 'Create a new booking', type: :system do
 
       click_button 'Book Flight!'
       expect(page).to have_content 'Here is your flight and ticket information:'
+      expect(page).to have_content '4 tickets'
+      expect(page).to have_content '2hrs, 0mins'
     end
   end
 end

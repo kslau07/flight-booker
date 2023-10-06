@@ -12,6 +12,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_airports_on_code  (code) UNIQUE
+#
 
 FactoryBot.define do
   sequence(:code, 'AAA')

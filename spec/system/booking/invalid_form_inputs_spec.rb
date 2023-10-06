@@ -2,11 +2,6 @@
 
 require 'rails_helper'
 
-# TODO: Add another system test with invalid inputs
-# TODO: Learn about services
-# TODO: Redo mailer, look at more indepth options
-# TODO: Write model tests for one model
-
 RSpec.feature 'Create a new booking', type: :system do
   context 'When the user provides incorrect or invalid form inputs,' do
     before do

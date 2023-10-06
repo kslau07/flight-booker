@@ -12,6 +12,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_airports_on_code  (code) UNIQUE
+#
 class Airport < ApplicationRecord
   has_many :departing_flights, class_name: 'Flight',
                                foreign_key: :departure_airport_id,
@@ -20,7 +24,7 @@ class Airport < ApplicationRecord
                               foreign_key: :arrival_airport_id,
                               dependent: :destroy
 
-  validates :code, presence: true
+  validates :code, presence: true, uniqueness: true
   validates :location, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true

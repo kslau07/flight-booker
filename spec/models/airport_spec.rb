@@ -14,59 +14,31 @@
 #
 require 'rails_helper'
 
-# NOTE: delete me
-# What is the input?
-# What is the expected output?
-# A lot of software engineering boils down to these two questions.
-
-# NOTE: delete me
-# Test behavior, not implementation
-# Validations are behavior
-# Associations are structure (and do not have to be tested, although they can be)
+# TODO: Learn about services
+# TODO: Add system test for booking to test 'add passenger' button
+# TODO: Redo mailer, look at more indepth options
 
 RSpec.describe Airport, type: :model do
-  let!(:airport) do
-    described_class.new(code:, location:, latitude:, longitude:)
-  end
-
-  describe '#valid?' do
-    subject { airport.valid? }
-    let!(:code) { 'ABC' }
-    let!(:location) { 'Anywhere, USA' }
-    let!(:latitude) { '42.42' }
-    let!(:longitude) { '-42.42' }
-
-    context 'when Airport contains only valid attributes' do
-      it { is_expected.to be true }
-    end
-
-    context 'when Airport contains an invalid "location"' do
-      let(:location) { '' }
-      it { is_expected.to be false }
-    end
-
-    context 'when Airport contains an invalid "latitude"' do
-      let(:latitude) { '' }
-      it { is_expected.to be false }
-    end
-
-    context 'when Airport contains an invalid "longitude"' do
-      let(:longitude) { '' }
-      it { is_expected.to be false }
-    end
+  describe 'Associations' do
+    it {
+      should have_many(:departing_flights)
+        .class_name('Flight')
+        .with_foreign_key('departure_airport_id')
+    }
+    it {
+      should have_many(:arriving_flights)
+        .class_name('Flight')
+        .with_foreign_key('arrival_airport_id')
+    }
   end
 
   describe 'Validations' do
-    it { should validate_presence_of(:code) }
-  # it { should validate_presence_of(:title) }
-    # it { is_expected.to validate_inclusion_of(:code) }
-    # it { is_expected.to validate_inclusion_of(:gender).in_array(%i[gender_neutral non_binary male female other]) }
-  end
+    subject { build(:airport) }
 
-  # before { FactoryBot.build(:user) }
-  # it do
-  #   should validate_uniqueness_of(:username)
-  #     .scoped_to(:account_id)
-  #     .case_insensitive
-  # end
+    it { should validate_presence_of(:code) }
+    it { should validate_uniqueness_of(:code) }
+    it { should validate_presence_of(:location) }
+    it { should validate_presence_of(:latitude) }
+    it { should validate_presence_of(:longitude) }
+  end
 end
