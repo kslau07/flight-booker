@@ -19,40 +19,40 @@ require 'rails_helper'
 # What is the expected output?
 # A lot of software engineering boils down to these two questions.
 
+# NOTE: delete me
+# Test behavior, not implementation
+# Validations are behavior
+# Associations are structure (and do not have to be tested, although they can be)
+
 RSpec.describe Airport, type: :model do
-  let(:airport) do
-    described_class.create(code: 'ABC', location: 'Anywhere, USA', latitude: '42.42', longitude: '-42.42')
+  let!(:airport) do
+    described_class.new(code:, location:, latitude:, longitude:)
   end
 
-  describe '#code' do
-    subject(:code) { airport.code }
+  describe '#valid?' do
+    subject { airport.valid? }
+    let!(:code) { 'ABC' }
+    let!(:location) { 'Anywhere, USA' }
+    let!(:latitude) { '42.42' }
+    let!(:longitude) { '-42.42' }
 
-    it 'returns the airport\'s IATA code' do
-      expect(code).to eq('ABC')
+    context 'when Airport contains only valid attributes' do
+      it { is_expected.to be true }
     end
-  end
 
-  describe '#location' do
-    subject(:location) { airport.location }
-
-    it "returns the airport's location" do
-      expect(location).to eq('Anywhere, USA')
+    context 'when Airport contains an invalid "location"' do
+      let(:location) { '' }
+      it { is_expected.to be false }
     end
-  end
 
-  describe '#latitude' do
-    subject(:latitude) { airport.latitude }
-
-    it "returns the airport's latitude" do
-      expect(latitude).to eq(42.42)
+    context 'when Airport contains an invalid "latitude"' do
+      let(:latitude) { '' }
+      it { is_expected.to be false }
     end
-  end
 
-  describe '#longitude' do
-    subject(:longitude) { airport.longitude }
-
-    it "returns the airport's longitude" do
-      expect(longitude).to eq(-42.42)
+    context 'when Airport contains an invalid "longitude"' do
+      let(:longitude) { '' }
+      it { is_expected.to be false }
     end
   end
 end

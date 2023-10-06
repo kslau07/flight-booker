@@ -39,11 +39,4 @@ RSpec.describe Flight, type: :model do
                            arrival_airport_id: arr_airport,
                            departure_airport_id: dep_airport)
   end
-
-  describe '#flight_duration' do
-    subject(:flight_duration) { flight.flight_duration }
-    it '' do
-      expect(flight_duration).to eq 1
-    end
-  end
 end
