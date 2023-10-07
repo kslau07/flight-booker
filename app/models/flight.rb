@@ -38,22 +38,22 @@ class Flight < ApplicationRecord
   scope :departing_from, ->(airport_id) { where(departure_airport_id: airport_id) }
   scope :arriving_at, ->(airport_id) { where(arrival_airport_id: airport_id) }
   scope :seats_avail, ->(num_tickets) { where('seats_avail >= ?', num_tickets) }
-  scope :starting_date, ->(date) { where(start: date) }
+  scope :starting_date, ->(date) { where(start_date: date) }
 
   def self.search_by_fields(search_params)
     return if search_params.empty?
 
-    search_params.delete_if { |_key, val| val == 'ANY' }
+    search_params.delete_if { |_key, val| val == 'ANY' } # remove k:v pair if 'ANY'
 
     query = Flight.all
 
     if search_params.key?('departure_code')
-      ap_id = Airport.find_by(code: search_params[:departure_code]).id
+      ap_id = Airport.find_by(code: search_params[:departure_code])&.id
       query = query.departing_from(ap_id)
     end
 
     if search_params.key?('arrival_code')
-      ap_id = Airport.find_by(code: search_params[:arrival_code]).id
+      ap_id = Airport.find_by(code: search_params[:arrival_code])&.id
       query = query.arriving_at(ap_id)
     end
 

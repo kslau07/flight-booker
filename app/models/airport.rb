@@ -26,6 +26,6 @@ class Airport < ApplicationRecord
 
   validates :code, presence: true, uniqueness: true
   validates :location, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
+  validates :latitude, presence: true          # for calculating flight duration
+  validates :longitude, presence: true         # for calculating flight duration
 end
