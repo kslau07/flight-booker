@@ -16,3 +16,10 @@
 #
 #  flight_id  (flight_id => flights.id)
 #
+require 'rails_helper'
+
+RSpec.describe Booking, type: :model do
+  it { should belong_to :flight }
+  it { should have_many :passengers }
+  it { should accept_nested_attributes_for :passengers }
+end

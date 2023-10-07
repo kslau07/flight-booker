@@ -42,29 +42,35 @@ RSpec.describe Flight, type: :model do
   end
 
   describe '.departing_from (scope)' do
-    let!(:dep_airport) { create(:airport, id: 42) }
-    let!(:flight_scope_departing_from) { create(:flight, departure_airport: dep_airport) }
+    let!(:airport_with_id_42) { create(:airport, id: 42) }
+    let!(:flight_with_departure_airport_42) { create(:flight, departure_airport: airport_with_id_42) }
 
-    it 'includes the airport with the specified departure_airport_id' do
-      expect(Flight.departing_from(42)).to include(flight_scope_departing_from)
+    scoped_result = Flight.departing_from(42)
+
+    it 'includes the airport with the specified departure_airport_id of 42' do
+      expect(scoped_result).to include(flight_with_departure_airport_42)
     end
   end
 
   describe '.arriving_at (scope)' do
-    let!(:arr_airport) { create(:airport, id: 555) }
-    let!(:flight_scope_arriving_from) { create(:flight, arrival_airport: arr_airport) }
+    let!(:airport_with_id_555) { create(:airport, id: 555) }
+    let!(:flight_with_arrival_airport_555) { create(:flight, arrival_airport: airport_with_id_555) }
 
-    it 'includes the airport with the specified arrival_airport_id' do
-      expect(Flight.arriving_at(555)).to include(flight_scope_arriving_from)
+    scoped_result = Flight.arriving_at(555)
+
+    it 'includes the airport with the specified arrival_airport_id of 555' do
+      expect(scoped_result).to include(flight_with_arrival_airport_555)
     end
   end
 
   describe '.seats_avail (scope)' do
-    let!(:seats_free) { 5 }
+    let!(:seats_free) { 4 }
     let!(:flight_scope_seats_avail) { create(:flight, seats_avail: seats_free) }
 
-    it 'includes the airport with 5 seats available' do
-      expect(Flight.seats_avail(5)).to include(flight_scope_seats_avail)
+    scoped_result = Flight.seats_avail(4)
+
+    it 'includes the airport with 4 seats available' do
+      expect(scoped_result).to include(flight_scope_seats_avail)
     end
   end
 
@@ -72,8 +78,10 @@ RSpec.describe Flight, type: :model do
     let!(:st_date) { '6-6-2006' }
     let!(:flight_scope_starting_date) { create(:flight, start_date: st_date) }
 
+    scoped_result = Flight.starting_date('6-6-2006')
+
     it 'includes the airport with specified start date' do
-      expect(Flight.starting_date('6-6-2006')).to include(flight_scope_starting_date)
+      expect(scoped_result).to include(flight_scope_starting_date)
     end
   end
 
